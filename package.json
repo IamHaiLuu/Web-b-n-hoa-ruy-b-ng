@@ -5,12 +5,16 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
+    "build": "npm run build:css",
     "dev": "nodemon server.js",
     "start": "node server.js",
     "build:css": "tailwindcss -i ./src/styles/tailwind.css -o ./public/css/app.css --minify",
     "watch:css": "tailwindcss -i ./src/styles/tailwind.css -o ./public/css/app.css --watch",
     "seed:admin": "node scripts/seedAdmin.js",
     "seed:categories": "node scripts/seedCategories.js"
+  },
+  "engines": {
+    "node": "22.x"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",

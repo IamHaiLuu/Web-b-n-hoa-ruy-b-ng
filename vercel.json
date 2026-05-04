@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build:css",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
+  ],
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "views/**"
+    }
+  }
+}

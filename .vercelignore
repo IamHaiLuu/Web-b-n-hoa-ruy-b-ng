@@ -1,0 +1,6 @@
+node_modules
+.env
+.git
+design
+CODEX_MENU_HOA_IMPLEMENTATION.md
+npm-debug.log*

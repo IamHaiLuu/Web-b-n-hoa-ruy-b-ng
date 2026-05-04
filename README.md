@@ -67,3 +67,23 @@ npm run build:css
 ```
 
 Không dùng Tailwind CDN trong production.
+
+## Deploy Vercel
+
+Project đã có `vercel.json` và entry serverless ở `api/index.js`.
+
+Trên Vercel cần cấu hình Environment Variables:
+
+- `NODE_ENV=production`
+- `MONGODB_URI`
+- `SESSION_SECRET`
+- `CLOUDINARY_CLOUD_NAME`
+- `CLOUDINARY_API_KEY`
+- `CLOUDINARY_API_SECRET`
+- `STORE_NAME`
+- `STORE_PHONE`
+- `STORE_ZALO`
+- `STORE_ADDRESS`
+- `STORE_GOOGLE_MAPS_URL`
+
+Vercel sẽ chạy `npm run build:css` khi deploy để tạo `public/css/app.css`. `server.js` chỉ dùng cho local bằng `npm run dev` hoặc `npm start`.

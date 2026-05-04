@@ -70,7 +70,7 @@ Không dùng Tailwind CDN trong production.
 
 ## Deploy Vercel
 
-Project đã có `vercel.json` và entry serverless ở `api/index.js`.
+Project đã có `vercel.json` và entry deploy ở `index.js`.
 
 Trên Vercel cần cấu hình Environment Variables:
 
@@ -86,4 +86,4 @@ Trên Vercel cần cấu hình Environment Variables:
 - `STORE_ADDRESS`
 - `STORE_GOOGLE_MAPS_URL`
 
-Vercel sẽ chạy `npm run build:css` khi deploy để tạo `public/css/app.css`. `server.js` chỉ dùng cho local bằng `npm run dev` hoặc `npm start`.
+Vercel dùng `index.js` làm serverless handler. Khi chạy local, cùng file `index.js` sẽ tự gọi `app.listen()` bằng `npm run dev` hoặc `npm start`.

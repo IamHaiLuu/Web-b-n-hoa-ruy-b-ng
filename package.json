@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "Website menu hoa server-rendered với Express, Pug, MongoDB, Tailwind và Cloudinary.",
   "type": "module",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "build": "npm run build:css",
-    "dev": "nodemon server.js",
-    "start": "node server.js",
-    "build:css": "tailwindcss -i ./src/styles/tailwind.css -o ./public/css/app.css --minify",
-    "watch:css": "tailwindcss -i ./src/styles/tailwind.css -o ./public/css/app.css --watch",
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "build:css": "tailwindcss -i ./styles/tailwind.css -o ./public/css/app.css --minify",
+    "watch:css": "tailwindcss -i ./styles/tailwind.css -o ./public/css/app.css --watch",
     "seed:admin": "node scripts/seedAdmin.js",
     "seed:categories": "node scripts/seedCategories.js"
   },

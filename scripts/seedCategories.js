@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
-import { connectDB, disconnectDB } from '../src/config/db.js';
-import Category from '../src/models/Category.js';
-import { createUniqueSlug } from '../src/services/slugService.js';
+import { connectDB, disconnectDB } from '../config/db.js';
+import Category from '../models/Category.js';
+import { createUniqueSlug } from '../services/slugService.js';
 
 dotenv.config();
 

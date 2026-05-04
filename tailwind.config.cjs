@@ -1,7 +1,19 @@
 const forms = require('@tailwindcss/forms');
 
 module.exports = {
-  content: ['./views/**/*.pug', './src/**/*.js', './public/js/**/*.js'],
+  content: [
+    './views/**/*.pug',
+    './config/**/*.js',
+    './controllers/**/*.js',
+    './middleware/**/*.js',
+    './models/**/*.js',
+    './routes/**/*.js',
+    './services/**/*.js',
+    './utils/**/*.js',
+    './validators/**/*.js',
+    './index.js',
+    './public/js/**/*.js'
+  ],
   theme: {
     extend: {
       fontFamily: {

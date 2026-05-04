@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
-import { connectDB, disconnectDB } from '../src/config/db.js';
-import Admin from '../src/models/Admin.js';
+import { connectDB, disconnectDB } from '../config/db.js';
+import Admin from '../models/Admin.js';
 
 dotenv.config();
 

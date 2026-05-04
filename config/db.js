@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
 
+mongoose.set('strictQuery', true);
+mongoose.set('bufferCommands', false);
+
 let listenersRegistered = false;
 let connectionPromise = null;
 
@@ -43,8 +46,6 @@ function registerConnectionLogs() {
 export async function connectDB() {
   const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/menu_hoa';
 
-  mongoose.set('strictQuery', true);
-  mongoose.set('bufferCommands', false);
   registerConnectionLogs();
 
   if (mongoose.connection.readyState === 1) {

@@ -1,0 +1,14 @@
+header(class="sticky top-0 z-40 border-b border-borderSoft bg-cream-50/90 backdrop-blur")
+  nav(class="shell flex h-18 items-center justify-between py-4")
+    a(href="/" class="font-display text-2xl font-semibold italic text-rosePastel-300") #{settings && settings.storeName ? settings.storeName : 'Menu Hoa'}
+    div(class="hidden items-center gap-7 md:flex")
+      a(href="/" class=`text-sm font-semibold ${currentPath === '/' ? 'text-textMain' : 'text-textSoft hover:text-textMain'}`) Trang chủ
+      a(href="/#categories" class="text-sm font-semibold text-textSoft hover:text-textMain") Danh mục hoa
+      a(href="/#featured" class="text-sm font-semibold text-textSoft hover:text-textMain") Hoa nổi bật
+      a(href="/contact" class=`text-sm font-semibold ${currentPath === '/contact' ? 'text-textMain' : 'text-textSoft hover:text-textMain'}`) Liên hệ
+    div(class="flex items-center gap-2")
+      a(href="/contact" class="btn-primary hidden sm:inline-flex")
+        span(class="material-symbols-outlined") call
+        | Liên hệ cửa hàng
+      a(href="/admin/login" class="btn-secondary !px-3" aria-label="Đăng nhập admin")
+        span(class="material-symbols-outlined") admin_panel_settings

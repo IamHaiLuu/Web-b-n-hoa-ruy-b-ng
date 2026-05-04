@@ -1,0 +1,57 @@
+extends ../../layouts/admin
+
+block content
+  form(method="POST" action="/admin/settings" enctype="multipart/form-data" class="grid gap-6 xl:grid-cols-[1fr_380px]")
+    section(class="soft-card p-5")
+      h2(class="font-display text-xl font-bold text-textMain") Thông tin cửa hàng
+      div(class="mt-5 grid gap-5 md:grid-cols-2")
+        div
+          label(for="storeName" class="label") Tên cửa hàng
+          input#storeName(type="text" name="storeName" value=(settings.storeName || '') class="field" required)
+          if errors && errors.storeName
+            p(class="help-error")= errors.storeName
+        div
+          label(for="phone" class="label") Số điện thoại
+          input#phone(type="text" name="phone" value=(settings.phone || '') class="field")
+        div
+          label(for="zalo" class="label") Zalo
+          input#zalo(type="text" name="zalo" value=(settings.zalo || '') class="field")
+        div
+          label(for="openingHours" class="label") Giờ mở cửa
+          input#openingHours(type="text" name="openingHours" value=(settings.openingHours || '') class="field")
+        div(class="md:col-span-2")
+          label(for="address" class="label") Địa chỉ
+          input#address(type="text" name="address" value=(settings.address || '') class="field")
+        div(class="md:col-span-2")
+          label(for="googleMapsUrl" class="label") Link Google Maps
+          input#googleMapsUrl(type="url" name="googleMapsUrl" value=(settings.googleMapsUrl || '') class="field")
+          if errors && errors.googleMapsUrl
+            p(class="help-error")= errors.googleMapsUrl
+        div(class="md:col-span-2")
+          label(for="description" class="label") Mô tả cửa hàng
+          textarea#description(name="description" rows="5" maxlength="500" class="field")= settings.description || ''
+          if errors && errors.description
+            p(class="help-error")= errors.description
+    aside(class="space-y-5")
+      div(class="soft-card p-5")
+        h2(class="font-display text-xl font-bold text-textMain") Hình ảnh thương hiệu
+        div(class="mt-5 space-y-5")
+          div
+            label(for="logo" class="label") Logo
+            if settings.logo && settings.logo.url
+              img(src=settings.logo.url alt="Logo cửa hàng" class="mb-3 h-24 w-24 rounded-3xl object-cover")
+            input#logo(type="file" name="logo" accept="image/jpeg,image/png,image/webp,image/gif" class="field file:mr-4 file:rounded-full file:border-0 file:bg-rosePastel-100 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-primary")
+          div
+            label(for="banner" class="label") Ảnh banner
+            if settings.banner && settings.banner.url
+              img(src=settings.banner.url alt="Banner cửa hàng" class="mb-3 aspect-video w-full rounded-3xl object-cover")
+            input#banner(type="file" name="banner" accept="image/jpeg,image/png,image/webp,image/gif" class="field file:mr-4 file:rounded-full file:border-0 file:bg-rosePastel-100 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-primary")
+            if errors && errors.banner
+              p(class="help-error")= errors.banner
+      div(class="flex flex-col gap-3")
+        button(type="submit" class="btn-primary w-full")
+          span(class="material-symbols-outlined") save
+          | Lưu cài đặt
+        a(href="/" target="_blank" class="btn-secondary w-full")
+          span(class="material-symbols-outlined") open_in_new
+          | Xem trang khách hàng

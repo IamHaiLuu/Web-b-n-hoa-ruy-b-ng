@@ -1,0 +1,29 @@
+div(data-sidebar-overlay class="fixed inset-0 z-40 hidden bg-textMain/30 backdrop-blur-sm lg:hidden")
+aside#admin-sidebar(data-admin-sidebar class="fixed inset-y-0 left-0 z-50 flex w-72 -translate-x-full flex-col border-r border-borderSoft bg-white p-5 shadow-soft transition-transform duration-200 lg:sticky lg:top-0 lg:z-auto lg:min-h-screen lg:translate-x-0 lg:shadow-none")
+  div(class="mb-7 flex items-start justify-between gap-4")
+    div
+      a(href="/admin" class="font-display text-xl font-bold text-textMain") Menu Hoa Admin
+      p(class="mt-1 text-xs font-medium text-textSoft") Quản lý menu hoa
+    button(type="button" data-sidebar-close class="rounded-full p-2 text-textSoft hover:bg-cream-100 hover:text-textMain lg:hidden" aria-label="Đóng menu quản trị")
+      span(class="material-symbols-outlined") close
+  a(href="/admin/flowers/new" class="btn-primary mb-7 w-full")
+    span(class="material-symbols-outlined") add
+    | Thêm mẫu mới
+  nav(class="flex-1 space-y-2")
+    a(href="/admin" class=`flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-semibold ${currentPath === '/admin' ? 'bg-cream-200 text-textMain' : 'text-textSoft hover:bg-cream-100 hover:text-textMain'}`)
+      span(class="material-symbols-outlined") dashboard
+      | Tổng quan
+    a(href="/admin/flowers" class=`flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-semibold ${currentPath.startsWith('/admin/flowers') ? 'bg-cream-200 text-textMain' : 'text-textSoft hover:bg-cream-100 hover:text-textMain'}`)
+      span(class="material-symbols-outlined") local_florist
+      | Quản lý hoa
+    a(href="/admin/categories" class=`flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-semibold ${currentPath.startsWith('/admin/categories') ? 'bg-cream-200 text-textMain' : 'text-textSoft hover:bg-cream-100 hover:text-textMain'}`)
+      span(class="material-symbols-outlined") category
+      | Danh mục
+    a(href="/admin/settings" class=`flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-semibold ${currentPath.startsWith('/admin/settings') ? 'bg-cream-200 text-textMain' : 'text-textSoft hover:bg-cream-100 hover:text-textMain'}`)
+      span(class="material-symbols-outlined") settings
+      | Cài đặt cửa hàng
+  div(class="mt-8 border-t border-borderSoft pt-5")
+    form(method="POST" action="/admin/logout")
+      button(type="submit" class="flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-sm font-semibold text-textSoft hover:bg-cream-100 hover:text-textMain")
+        span(class="material-symbols-outlined") logout
+        | Đăng xuất

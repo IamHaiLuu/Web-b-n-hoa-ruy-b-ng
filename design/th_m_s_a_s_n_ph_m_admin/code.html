@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thêm mẫu hoa mới - Menu Hoa Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "border-light": "#F1DCDC",
+                        "on-error-container": "#93000a",
+                        "accent-mint": "#BFE7DD",
+                        "surface-tint": "#81505d",
+                        "secondary-fixed": "#eedbff",
+                        "text-secondary": "#8A7777",
+                        "on-primary-fixed-variant": "#663945",
+                        "tertiary-container": "#a9d1c7",
+                        "secondary": "#69567e",
+                        "on-secondary-fixed": "#241337",
+                        "on-background": "#231919",
+                        "outline": "#837376",
+                        "surface-container-high": "#f6e4e3",
+                        "surface-bright": "#fff8f7",
+                        "surface": "#fff8f7",
+                        "inverse-primary": "#f4b6c4",
+                        "on-secondary-container": "#6a577f",
+                        "surface-dim": "#e8d6d5",
+                        "tertiary-fixed": "#c3ebe1",
+                        "on-primary-fixed": "#330f1a",
+                        "bg-main": "#FFFDF9",
+                        "background": "#fff8f7",
+                        "tertiary-fixed-dim": "#a7cfc5",
+                        "status-available": "#BFE7DD",
+                        "outline-variant": "#d5c2c5",
+                        "secondary-container": "#e8d1ff",
+                        "primary": "#81505d",
+                        "status-unavailable": "#F1DCDC",
+                        "bg-ash-rose": "#F8EFEF",
+                        "surface-container-low": "#fff0f0",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#00201b",
+                        "on-primary-container": "#754652",
+                        "secondary-fixed-dim": "#d4beeb",
+                        "on-surface": "#231919",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#40655d",
+                        "text-primary": "#3F3434",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#382e2e",
+                        "surface-container": "#fceae9",
+                        "surface-variant": "#f0dede",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#504346",
+                        "on-tertiary-fixed-variant": "#284d46",
+                        "primary-fixed": "#ffd9e0",
+                        "accent-lavender": "#D9C2F0",
+                        "primary-fixed-dim": "#f4b6c4",
+                        "on-tertiary-container": "#365b53",
+                        "on-secondary-fixed-variant": "#513f65",
+                        "bg-soft-rose": "#FFF8F7",
+                        "primary-container": "#f6b8c6",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#f0dede",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#ffedec"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "stack-lg": "32px",
+                        "card-gap": "24px",
+                        "stack-md": "16px",
+                        "section-padding": "80px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Be Vietnam Pro"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "price": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "h1": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h3": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "price": ["20px", { "lineHeight": "1", "fontWeight": "700" }],
+                        "h2": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom scrollbar for admin feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFDF9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #F1DCDC;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f6b8c6;
+        }
+    </style>
+</head>
+<body class="bg-bg-main text-text-primary font-body-md text-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Shared Component: SideNavBar -->
+<nav class="fixed left-0 top-0 h-screen w-[280px] border-r border-[#F1DCDC] dark:border-slate-800 bg-[#FFFDF9] dark:bg-slate-950 shadow-[4px_0_24px_rgba(246,184,198,0.05)] flex flex-col p-6 gap-2 z-50">
+<!-- Header -->
+<div class="flex items-center gap-4 mb-8 px-2">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined icon-fill">local_florist</span>
+</div>
+<div>
+<h1 class="font-['Plus_Jakarta_Sans'] text-xl font-bold text-[#3F3434] dark:text-pink-100 leading-tight">Menu Hoa</h1>
+<p class="font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight text-[#3F3434]/60">Hệ thống quản trị</p>
+</div>
+</div>
+<!-- Main Tabs -->
+<div class="flex-1 flex flex-col gap-2">
+<!-- Bảng điều khiển (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#3F3434]/70 dark:text-slate-400 hover:text-[#F6B8C6] transition-all duration-300 hover:bg-[#F8EFEF] dark:hover:bg-slate-900 hover:translate-x-1 font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Bảng điều khiển</span>
+</a>
+<!-- Danh mục hoa (ACTIVE - Intent Mapping) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-[#F8EFEF] dark:bg-slate-900 text-[#F6B8C6] font-bold font-['Plus_Jakarta_Sans'] text-sm tracking-tight transition-transform scale-[0.98]" href="#">
+<span class="material-symbols-outlined icon-fill">local_florist</span>
+<span>Danh mục hoa</span>
+</a>
+<!-- Đơn hàng (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#3F3434]/70 dark:text-slate-400 hover:text-[#F6B8C6] transition-all duration-300 hover:bg-[#F8EFEF] dark:hover:bg-slate-900 hover:translate-x-1 font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span>Đơn hàng</span>
+</a>
+<!-- Khách hàng (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#3F3434]/70 dark:text-slate-400 hover:text-[#F6B8C6] transition-all duration-300 hover:bg-[#F8EFEF] dark:hover:bg-slate-900 hover:translate-x-1 font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Khách hàng</span>
+</a>
+<!-- Cài đặt (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#3F3434]/70 dark:text-slate-400 hover:text-[#F6B8C6] transition-all duration-300 hover:bg-[#F8EFEF] dark:hover:bg-slate-900 hover:translate-x-1 font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Cài đặt</span>
+</a>
+</div>
+<!-- Footer Actions -->
+<div class="mt-auto pt-4 border-t border-[#F1DCDC] dark:border-slate-800 flex flex-col gap-2">
+<button class="w-full py-3 px-4 rounded-lg bg-primary-container text-on-primary-container font-['Plus_Jakarta_Sans'] text-sm font-bold flex items-center justify-center gap-2 hover:bg-primary-fixed-dim transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm">add</span>
+                Thêm mẫu mới
+            </button>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#3F3434]/70 dark:text-slate-400 hover:text-[#F6B8C6] transition-all duration-300 hover:bg-[#F8EFEF] dark:hover:bg-slate-900 hover:translate-x-1 font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Hỗ trợ</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#3F3434]/70 dark:text-slate-400 hover:text-[#F6B8C6] transition-all duration-300 hover:bg-[#F8EFEF] dark:hover:bg-slate-900 hover:translate-x-1 font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Đăng xuất</span>
+</a>
+</div>
+</nav>
+<!-- Shared Component: TopAppBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-280px)] h-16 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-[#F1DCDC] dark:border-slate-800 flex justify-between items-center px-8 z-40 transition-all duration-300">
+<!-- Search Bar (on_left) -->
+<div class="relative w-96 group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary group-focus-within:text-[#F6B8C6] transition-colors">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-bg-ash-rose border-transparent rounded-full font-['Plus_Jakarta_Sans'] text-sm text-text-primary focus:bg-white focus:border-[#F6B8C6] focus:ring-1 focus:ring-[#F6B8C6] outline-none transition-all placeholder:text-text-secondary/70" placeholder="Tìm kiếm mẫu hoa, đơn hàng..." type="text"/>
+</div>
+<!-- Trailing Icon Actions -->
+<div class="flex items-center gap-4 text-[#F6B8C6] dark:text-[#F6B8C6]">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#F8EFEF] transition-colors relative text-[#3F3434]/60 hover:text-[#F6B8C6]">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border border-white"></span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#F8EFEF] transition-colors text-[#3F3434]/60 hover:text-[#F6B8C6]">
+<span class="material-symbols-outlined">mail</span>
+</button>
+<div class="h-6 w-px bg-border-light mx-2"></div>
+<button class="flex items-center gap-2 hover:bg-[#F8EFEF] py-1 px-2 rounded-full transition-colors">
+<span class="material-symbols-outlined icon-fill text-[#F6B8C6]">account_circle</span>
+<span class="font-['Plus_Jakarta_Sans'] text-sm font-medium text-text-primary">Admin Quản lý</span>
+<span class="material-symbols-outlined text-sm text-text-secondary">expand_more</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="ml-[280px] mt-16 p-section-padding min-h-screen">
+<div class="max-w-container-max mx-auto">
+<!-- Page Header -->
+<div class="flex flex-col gap-2 mb-stack-lg">
+<div class="flex items-center gap-2 text-text-secondary font-label-caps text-label-caps">
+<a class="hover:text-primary transition-colors" href="#">Danh mục hoa</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-primary font-semibold">Thêm mẫu hoa mới</span>
+</div>
+<div class="flex justify-between items-end">
+<h2 class="font-h2 text-h2 text-text-primary">Thêm mẫu hoa mới</h2>
+<div class="flex gap-4">
+<button class="px-6 py-2.5 rounded-full border-1.5 border-border-light text-text-primary font-body-md hover:bg-surface-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">close</span>
+                            Hủy bỏ
+                        </button>
+<button class="px-6 py-2.5 rounded-full bg-primary-container text-on-primary-container font-body-md font-medium hover:bg-primary-fixed-dim hover:-translate-y-0.5 transition-all shadow-[0_4px_14px_rgba(246,184,198,0.4)] flex items-center gap-2">
+<span class="material-symbols-outlined text-sm icon-fill">save</span>
+                            Lưu mẫu hoa
+                        </button>
+</div>
+</div>
+</div>
+<!-- Content Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-card-gap">
+<!-- Left Column: Information Input -->
+<div class="lg:col-span-8 flex flex-col gap-card-gap">
+<!-- General Info Card -->
+<div class="bg-surface-bright rounded-xl shadow-[0_8px_30px_rgba(246,184,198,0.06)] border border-surface-dim p-stack-lg">
+<h3 class="font-h3 text-h3 text-text-primary mb-stack-md flex items-center gap-2 border-b border-border-light pb-4">
+<span class="material-symbols-outlined text-tertiary-container">info</span>
+                            Thông tin cơ bản
+                        </h3>
+<div class="flex flex-col gap-stack-md">
+<!-- Tên mẫu hoa -->
+<div>
+<label class="font-label-caps text-label-caps text-text-secondary mb-2 block uppercase tracking-wider">Tên mẫu hoa <span class="text-error">*</span></label>
+<input class="w-full bg-bg-ash-rose border-transparent rounded-lg px-4 py-3 text-text-primary font-body-md focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 focus:bg-white outline-none transition-all placeholder:text-text-secondary/60" placeholder="Nhập tên bó hoa, lẵng hoa..." type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- Danh mục -->
+<div>
+<label class="font-label-caps text-label-caps text-text-secondary mb-2 block uppercase tracking-wider">Danh mục <span class="text-error">*</span></label>
+<div class="relative">
+<select class="w-full bg-bg-ash-rose border-transparent rounded-lg pl-4 pr-10 py-3 text-text-primary font-body-md focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 focus:bg-white outline-none transition-all appearance-none cursor-pointer">
+<option disabled="" selected="" value="">Chọn danh mục</option>
+<option value="hoa-bo">Hoa Bó</option>
+<option value="hoa-lang">Hoa Lẵng</option>
+<option value="hoa-cuoi">Hoa Cưới</option>
+<option value="hoa-su-kien">Hoa Sự Kiện</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Giá bán -->
+<div>
+<label class="font-label-caps text-label-caps text-text-secondary mb-2 block uppercase tracking-wider">Giá tham khảo (VNĐ)</label>
+<div class="relative">
+<input class="w-full bg-bg-ash-rose border-transparent rounded-lg pl-4 pr-12 py-3 text-text-primary font-body-md focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 focus:bg-white outline-none transition-all placeholder:text-text-secondary/60" placeholder="VD: 550,000" type="text"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-text-secondary font-label-caps text-label-caps">VNĐ</span>
+</div>
+<p class="text-xs text-text-secondary mt-1.5 italic">Để trống nếu muốn hiển thị "Liên hệ"</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Description Card -->
+<div class="bg-surface-bright rounded-xl shadow-[0_8px_30px_rgba(246,184,198,0.06)] border border-surface-dim p-stack-lg">
+<div class="flex justify-between items-center mb-stack-md border-b border-border-light pb-4">
+<h3 class="font-h3 text-h3 text-text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container">description</span>
+                                Mô tả chi tiết
+                            </h3>
+<div class="flex gap-2 text-text-secondary">
+<button class="p-1.5 rounded hover:bg-surface-variant transition-colors" title="In đậm"><span class="material-symbols-outlined text-sm">format_bold</span></button>
+<button class="p-1.5 rounded hover:bg-surface-variant transition-colors" title="In nghiêng"><span class="material-symbols-outlined text-sm">format_italic</span></button>
+<button class="p-1.5 rounded hover:bg-surface-variant transition-colors" title="Danh sách"><span class="material-symbols-outlined text-sm">format_list_bulleted</span></button>
+</div>
+</div>
+<div>
+<textarea class="w-full bg-bg-ash-rose border-transparent rounded-lg px-4 py-3 text-text-primary font-body-md focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 focus:bg-white outline-none transition-all placeholder:text-text-secondary/60 resize-y" placeholder="Mô tả các loại hoa sử dụng, ý nghĩa bó hoa, phong cách cắm..." rows="6"></textarea>
+</div>
+<div class="mt-4">
+<label class="font-label-caps text-label-caps text-text-secondary mb-2 block uppercase tracking-wider">Thành phần hoa chính (Tags)</label>
+<input class="w-full bg-bg-ash-rose border-transparent rounded-lg px-4 py-3 text-text-primary font-body-md focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 focus:bg-white outline-none transition-all placeholder:text-text-secondary/60" placeholder="Nhập tên hoa (VD: Hồng pastel, Cẩm chướng) và nhấn Enter" type="text"/>
+<!-- Tag preview placeholder -->
+<div class="flex gap-2 mt-3 flex-wrap">
+<span class="inline-flex items-center gap-1 px-3 py-1 bg-surface-container-high rounded-full text-sm text-text-primary border border-surface-dim">
+                                    Hồng Ohara <button class="hover:text-error ml-1"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Images & Status -->
+<div class="lg:col-span-4 flex flex-col gap-card-gap">
+<!-- Media Upload Card -->
+<div class="bg-surface-bright rounded-xl shadow-[0_8px_30px_rgba(246,184,198,0.06)] border border-surface-dim p-stack-lg">
+<h3 class="font-h3 text-h3 text-text-primary mb-stack-md flex items-center gap-2 border-b border-border-light pb-4">
+<span class="material-symbols-outlined text-tertiary-container">image</span>
+                            Hình ảnh mẫu hoa
+                        </h3>
+<!-- Main Image Upload Area -->
+<div class="border-2 border-dashed border-outline-variant hover:border-primary-container bg-surface-container-low hover:bg-bg-ash-rose rounded-xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 group min-h-[240px]">
+<div class="w-16 h-16 rounded-full bg-white shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl text-primary-container">cloud_upload</span>
+</div>
+<p class="font-body-md font-medium text-text-primary mb-1">Kéo thả ảnh hoặc click để tải lên</p>
+<p class="text-sm text-text-secondary">Hỗ trợ JPG, PNG. Kích thước tối đa 5MB</p>
+<p class="text-xs text-text-secondary mt-2 italic">(Tỷ lệ ảnh gợi ý: 3:4 hoặc 1:1)</p>
+</div>
+<!-- Thumbnail Strip (Empty State Simulation) -->
+<div class="grid grid-cols-4 gap-2 mt-4">
+<div class="aspect-square rounded-lg border border-dashed border-outline-variant flex items-center justify-center bg-surface-container-low text-text-secondary cursor-pointer hover:bg-bg-ash-rose transition-colors">
+<span class="material-symbols-outlined text-xl">add</span>
+</div>
+<div class="aspect-square rounded-lg border border-dashed border-outline-variant flex items-center justify-center bg-surface-container-low text-text-secondary cursor-pointer hover:bg-bg-ash-rose transition-colors">
+<span class="material-symbols-outlined text-xl">add</span>
+</div>
+</div>
+</div>
+<!-- Status & Properties Card -->
+<div class="bg-surface-bright rounded-xl shadow-[0_8px_30px_rgba(246,184,198,0.06)] border border-surface-dim p-stack-lg">
+<h3 class="font-h3 text-h3 text-text-primary mb-stack-md flex items-center gap-2 border-b border-border-light pb-4">
+<span class="material-symbols-outlined text-tertiary-container">tune</span>
+                            Trạng thái hiển thị
+                        </h3>
+<div class="flex flex-col gap-stack-md">
+<!-- Toggle: Hiển thị -->
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-variant/50 transition-colors cursor-pointer">
+<div>
+<p class="font-body-md font-medium text-text-primary">Hiển thị trên website</p>
+<p class="text-sm text-text-secondary">Cho phép khách hàng nhìn thấy mẫu này</p>
+</div>
+<!-- CSS Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-status-available"></div>
+</label>
+</div>
+<!-- Toggle: Nổi bật -->
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-variant/50 transition-colors cursor-pointer">
+<div>
+<p class="font-body-md font-medium text-text-primary">Đánh dấu nổi bật</p>
+<p class="text-sm text-text-secondary">Hiển thị ở mục "Hoa gợi ý"</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<hr class="border-border-light my-2"/>
+<!-- Stock Status -->
+<div>
+<label class="font-label-caps text-label-caps text-text-secondary mb-3 block uppercase tracking-wider">Tình trạng hàng</label>
+<div class="grid grid-cols-2 gap-3">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="stock_status" type="radio" value="available"/>
+<div class="text-center p-3 rounded-lg border border-outline-variant peer-checked:border-tertiary-fixed-dim peer-checked:bg-status-available/20 transition-all">
+<span class="block font-body-md font-medium text-on-tertiary-fixed-variant">Còn mẫu</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="stock_status" type="radio" value="unavailable"/>
+<div class="text-center p-3 rounded-lg border border-outline-variant peer-checked:border-border-light peer-checked:bg-status-unavailable/50 transition-all">
+<span class="block font-body-md font-medium text-text-secondary">Tạm hết</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

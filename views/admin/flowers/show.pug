@@ -1,0 +1,54 @@
+extends ../../layouts/admin
+
+include ../../partials/admin/status-badge
+include ../../partials/public/flower-card
+
+block content
+  div(class="mb-6 flex flex-wrap items-center justify-between gap-3")
+    a(href="/admin/flowers" class="inline-flex items-center gap-2 text-sm font-semibold text-textSoft hover:text-textMain")
+      span(class="material-symbols-outlined") arrow_back
+      | Quay lại danh sách
+    div(class="flex flex-wrap gap-2")
+      a(href=`/admin/flowers/${flower._id}/edit` class="btn-primary")
+        span(class="material-symbols-outlined") edit
+        | Chỉnh sửa
+      form(method="POST" action=`/admin/flowers/${flower._id}/toggle-visibility`)
+        button(type="submit" class="btn-secondary") #{flower.visibilityStatus === 'visible' ? 'Ẩn khỏi menu' : 'Hiện trên menu'}
+      form(method="POST" action=`/admin/flowers/${flower._id}/toggle-featured`)
+        button(type="submit" class="btn-secondary") #{flower.isFeatured ? 'Bỏ nổi bật' : 'Đánh dấu nổi bật'}
+      form(method="POST" action=`/admin/flowers/${flower._id}/delete`)
+        button(type="submit" data-confirm-submit="Xóa mẫu hoa khỏi hệ thống quản lý chính?" class="btn-danger") Xóa
+
+  div(class="grid gap-6 xl:grid-cols-[1fr_390px]")
+    section(class="soft-card p-5")
+      if flower.images && flower.images.length
+        div(class="grid gap-3 sm:grid-cols-2")
+          each image in flower.images
+            img(src=image.url alt=(image.alt || flower.name) class="aspect-square rounded-3xl object-cover")
+      else
+        img(src="/images/placeholders/flower-placeholder.svg" alt=flower.name class="aspect-square w-full max-w-xl rounded-3xl object-cover")
+
+    aside(class="space-y-5")
+      div(class="soft-card p-5")
+        div(class="mb-3 flex flex-wrap gap-2")
+          +availabilityBadge(flower.availabilityStatus)
+          +visibilityBadge(flower.visibilityStatus)
+          if flower.isFeatured
+            span(class="rounded-full bg-lavender-100 px-3 py-1 text-xs font-semibold text-primary") Nổi bật
+        h1(class="font-display text-3xl font-bold text-textMain")= flower.name
+        p(class="mt-3 font-display text-2xl font-bold text-primary")= formatCurrency(flower.referencePrice)
+        p(class="mt-4 text-sm leading-6 text-textSoft")= flower.shortDescription || 'Chưa có mô tả ngắn.'
+        dl(class="mt-5 space-y-3 text-sm")
+          div
+            dt(class="font-semibold text-textMain") Danh mục
+            dd(class="mt-1 text-textSoft") #{flower.category ? flower.category.name : 'Chưa có'}
+          div
+            dt(class="font-semibold text-textMain") Cập nhật gần nhất
+            dd(class="mt-1 text-textSoft")= new Date(flower.updatedAt).toLocaleString('vi-VN')
+          div
+            dt(class="font-semibold text-textMain") Người cập nhật
+            dd(class="mt-1 text-textSoft") #{flower.updatedBy ? flower.updatedBy.name : 'Admin'}
+      div(class="soft-card p-5")
+        h2(class="font-display text-xl font-bold text-textMain") Preview card khách hàng
+        div(class="mt-4")
+          +flowerCard(flower)

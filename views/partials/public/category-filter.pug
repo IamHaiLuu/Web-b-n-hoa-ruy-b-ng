@@ -1,0 +1,11 @@
+section#categories(class="shell py-8")
+  div(class="mb-5 flex items-end justify-between gap-4")
+    div
+      p(class="text-xs font-bold uppercase tracking-wide text-primary") Danh mục
+      h2(class="font-display text-2xl font-semibold text-textMain") Chọn phong cách hoa
+  div(class="flex gap-3 overflow-x-auto pb-2")
+    a(href="/" class=`shrink-0 rounded-full px-5 py-3 text-sm font-semibold ${!query.category ? 'bg-rosePastel-200 text-textMain' : 'border border-borderSoft bg-white text-textSoft hover:text-textMain'}`) Tất cả
+    each category in categories
+      a(href=`/?category=${category.slug}` class=`shrink-0 rounded-full px-5 py-3 text-sm font-semibold ${query.category === category.slug ? 'bg-rosePastel-200 text-textMain' : 'border border-borderSoft bg-white text-textSoft hover:text-textMain'}`)
+        span(class="material-symbols-outlined mr-2 align-[-4px]")= category.icon || 'local_florist'
+        = category.name

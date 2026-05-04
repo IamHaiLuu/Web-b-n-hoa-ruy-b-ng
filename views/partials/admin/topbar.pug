@@ -1,0 +1,17 @@
+header(class="sticky top-0 z-30 border-b border-borderSoft bg-cream-50/90 backdrop-blur")
+  div(class="flex min-h-16 items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8")
+    div(class="flex min-w-0 items-center gap-3")
+      button(type="button" data-sidebar-open class="rounded-full border border-borderSoft bg-white p-2 text-textMain shadow-card lg:hidden" aria-controls="admin-sidebar" aria-expanded="false" aria-label="Mở menu quản trị")
+        span(class="material-symbols-outlined") menu
+      div(class="min-w-0")
+        p(class="text-xs font-bold uppercase tracking-wide text-primary") Menu Hoa
+        h1(class="truncate font-display text-xl font-bold text-textMain sm:text-2xl") #{pageTitle || 'Quản trị'}
+    div(class="flex items-center gap-3")
+      a(href="/" target="_blank" class="btn-secondary hidden !px-4 !py-2 sm:inline-flex")
+        span(class="material-symbols-outlined") open_in_new
+        | Xem menu
+      div(class="flex items-center gap-3 rounded-full bg-white px-3 py-2 shadow-card")
+        div(class="grid h-8 w-8 place-items-center rounded-full bg-lavender-100 text-sm font-bold text-primary") A
+        div(class="hidden sm:block")
+          p(class="text-sm font-semibold text-textMain") #{currentAdmin ? currentAdmin.name : 'Admin'}
+          p(class="text-xs text-emerald-600") Đang online

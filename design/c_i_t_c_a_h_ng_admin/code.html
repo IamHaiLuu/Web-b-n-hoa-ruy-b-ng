@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cài đặt cửa hàng - Menu Hoa Admin</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "border-light": "#F1DCDC",
+                    "on-error-container": "#93000a",
+                    "accent-mint": "#BFE7DD",
+                    "surface-tint": "#81505d",
+                    "secondary-fixed": "#eedbff",
+                    "text-secondary": "#8A7777",
+                    "on-primary-fixed-variant": "#663945",
+                    "tertiary-container": "#a9d1c7",
+                    "secondary": "#69567e",
+                    "on-secondary-fixed": "#241337",
+                    "on-background": "#231919",
+                    "outline": "#837376",
+                    "surface-container-high": "#f6e4e3",
+                    "surface-bright": "#fff8f7",
+                    "surface": "#fff8f7",
+                    "inverse-primary": "#f4b6c4",
+                    "on-secondary-container": "#6a577f",
+                    "surface-dim": "#e8d6d5",
+                    "tertiary-fixed": "#c3ebe1",
+                    "on-primary-fixed": "#330f1a",
+                    "bg-main": "#FFFDF9",
+                    "background": "#fff8f7",
+                    "tertiary-fixed-dim": "#a7cfc5",
+                    "status-available": "#BFE7DD",
+                    "outline-variant": "#d5c2c5",
+                    "secondary-container": "#e8d1ff",
+                    "primary": "#81505d",
+                    "status-unavailable": "#F1DCDC",
+                    "bg-ash-rose": "#F8EFEF",
+                    "surface-container-low": "#fff0f0",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#00201b",
+                    "on-primary-container": "#754652",
+                    "secondary-fixed-dim": "#d4beeb",
+                    "on-surface": "#231919",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#40655d",
+                    "text-primary": "#3F3434",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#382e2e",
+                    "surface-container": "#fceae9",
+                    "surface-variant": "#f0dede",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#504346",
+                    "on-tertiary-fixed-variant": "#284d46",
+                    "primary-fixed": "#ffd9e0",
+                    "accent-lavender": "#D9C2F0",
+                    "primary-fixed-dim": "#f4b6c4",
+                    "on-tertiary-container": "#365b53",
+                    "on-secondary-fixed-variant": "#513f65",
+                    "bg-soft-rose": "#FFF8F7",
+                    "primary-container": "#f6b8c6",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#f0dede",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#ffedec"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "stack-lg": "32px",
+                    "card-gap": "24px",
+                    "stack-md": "16px",
+                    "section-padding": "80px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "label-caps": [
+                            "Be Vietnam Pro"
+                    ],
+                    "h3": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "price": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "h2": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-md": [
+                            "Be Vietnam Pro"
+                    ],
+                    "body-lg": [
+                            "Be Vietnam Pro"
+                    ],
+                    "h1": [
+                            "Plus Jakarta Sans"
+                    ]
+            },
+            "fontSize": {
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "h3": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "price": [
+                            "20px",
+                            {
+                                    "lineHeight": "1",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "h2": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "h1": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+</head>
+<body class="bg-bg-main font-body-md text-text-primary min-h-screen flex selection:bg-primary-container/30">
+<!-- SideNavBar (Shared Component) -->
+<nav class="fixed left-0 top-0 h-screen w-[280px] border-r border-[#F1DCDC] dark:border-slate-800 bg-[#FFFDF9] dark:bg-slate-950 flex flex-col p-6 gap-2 shadow-[4px_0_24px_rgba(246,184,198,0.05)] z-50">
+<!-- Header -->
+<div class="flex items-center gap-4 px-2 py-4 mb-6">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_florist</span>
+</div>
+<div>
+<h2 class="text-xl font-bold text-[#3F3434] dark:text-pink-100 font-h3">Menu Hoa</h2>
+<p class="font-label-caps text-label-caps text-text-secondary mt-1">Hệ thống quản trị</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 flex flex-col gap-1">
+<!-- Bảng điều khiển (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#3F3434]/70 dark:text-slate-400 hover:text-[#F6B8C6] transition-all duration-300 hover:bg-[#F8EFEF] dark:hover:bg-slate-900 hover:translate-x-1 font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Bảng điều khiển</span>
+</a>
+<!-- Danh mục hoa (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#3F3434]/70 dark:text-slate-400 hover:text-[#F6B8C6] transition-all duration-300 hover:bg-[#F8EFEF] dark:hover:bg-slate-900 hover:translate-x-1 font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">local_florist</span>
+<span>Danh mục hoa</span>
+</a>
+<!-- Đơn hàng (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#3F3434]/70 dark:text-slate-400 hover:text-[#F6B8C6] transition-all duration-300 hover:bg-[#F8EFEF] dark:hover:bg-slate-900 hover:translate-x-1 font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span>Đơn hàng</span>
+</a>
+<!-- Khách hàng (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#3F3434]/70 dark:text-slate-400 hover:text-[#F6B8C6] transition-all duration-300 hover:bg-[#F8EFEF] dark:hover:bg-slate-900 hover:translate-x-1 font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Khách hàng</span>
+</a>
+<!-- Cài đặt (Active) -->
+<a class="flex items-center gap-3 px-4 py-3 bg-[#F8EFEF] dark:bg-slate-900 text-[#F6B8C6] font-bold rounded-lg font-['Plus_Jakarta_Sans'] text-sm tracking-tight scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span>Cài đặt</span>
+</a>
+</div>
+<!-- CTA -->
+<div class="mt-4 mb-6">
+<button class="w-full py-3 rounded-xl bg-primary-container text-text-primary font-['Plus_Jakarta_Sans'] text-sm font-bold shadow-sm hover:opacity-90 transition-opacity">
+                Thêm mẫu mới
+            </button>
+</div>
+<!-- Footer Links -->
+<div class="border-t border-border-light pt-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-[#3F3434]/70 dark:text-slate-400 hover:text-[#F6B8C6] transition-all duration-300 hover:bg-[#F8EFEF] dark:hover:bg-slate-900 font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Hỗ trợ</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-[#3F3434]/70 dark:text-slate-400 hover:text-[#F6B8C6] transition-all duration-300 hover:bg-[#F8EFEF] dark:hover:bg-slate-900 font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Đăng xuất</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 ml-[280px] flex flex-col min-h-screen">
+<!-- TopAppBar (Shared Component) -->
+<header class="fixed top-0 right-0 w-[calc(100%-280px)] h-16 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-[#F1DCDC] dark:border-slate-800 flex justify-between items-center px-8 z-40 transition-opacity duration-300">
+<!-- Search -->
+<div class="flex items-center bg-bg-ash-rose rounded-full px-4 py-2 w-72">
+<span class="material-symbols-outlined text-text-secondary mr-2 text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full font-['Plus_Jakarta_Sans'] text-[#3F3434] placeholder:text-[#3F3434]/50" placeholder="Tìm kiếm..." type="text"/>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-4 text-[#F6B8C6] dark:text-[#F6B8C6]">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F8EFEF] transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F8EFEF] transition-colors">
+<span class="material-symbols-outlined">mail</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F8EFEF] transition-colors ml-2">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas (Settings Form) -->
+<main class="flex-1 pt-24 px-8 pb-12 overflow-y-auto">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h1 class="font-h2 text-h2 text-text-primary mb-2">Cài đặt cửa hàng</h1>
+<p class="font-body-md text-body-md text-text-secondary">Quản lý thông tin hiển thị và liên hệ của cửa hàng.</p>
+</div>
+<button class="bg-primary-container text-text-primary px-6 py-3 rounded-full font-h3 text-[16px] shadow-[0_4px_14px_rgba(246,184,198,0.4)] hover:-translate-y-0.5 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                    Lưu thay đổi
+                </button>
+</div>
+<!-- Bento Grid Layout for Form -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Basic Information (Spans 2 cols) -->
+<div class="lg:col-span-2 flex flex-col gap-8">
+<!-- Card: Thông tin liên hệ -->
+<div class="bg-surface-bright rounded-2xl p-8 shadow-[0_8px_30px_rgba(246,184,198,0.06)] border border-border-light/50">
+<h3 class="font-h3 text-[20px] text-text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">storefront</span>
+                            Thông tin cơ bản
+                        </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Store Name -->
+<div class="md:col-span-2">
+<label class="font-label-caps text-label-caps text-text-secondary mb-2 block">Tên cửa hàng</label>
+<input class="w-full bg-bg-ash-rose border-transparent rounded-xl px-4 py-3 font-body-md text-text-primary focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:bg-white transition-colors" type="text" value="Tiệm Hoa Tháng Năm"/>
+</div>
+<!-- Phone -->
+<div>
+<label class="font-label-caps text-label-caps text-text-secondary mb-2 block">Số điện thoại</label>
+<input class="w-full bg-bg-ash-rose border-transparent rounded-xl px-4 py-3 font-body-md text-text-primary focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:bg-white transition-colors" type="tel" value="0901 234 567"/>
+</div>
+<!-- Zalo -->
+<div>
+<label class="font-label-caps text-label-caps text-text-secondary mb-2 block">Zalo (SĐT hoặc Link)</label>
+<input class="w-full bg-bg-ash-rose border-transparent rounded-xl px-4 py-3 font-body-md text-text-primary focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:bg-white transition-colors" type="text" value="0901 234 567"/>
+</div>
+<!-- Opening Hours -->
+<div class="md:col-span-2">
+<label class="font-label-caps text-label-caps text-text-secondary mb-2 block">Giờ mở cửa</label>
+<input class="w-full bg-bg-ash-rose border-transparent rounded-xl px-4 py-3 font-body-md text-text-primary focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:bg-white transition-colors" type="text" value="08:00 - 20:00 (Thứ 2 - Chủ Nhật)"/>
+</div>
+</div>
+</div>
+<!-- Card: Địa điểm -->
+<div class="bg-surface-bright rounded-2xl p-8 shadow-[0_8px_30px_rgba(246,184,198,0.06)] border border-border-light/50">
+<h3 class="font-h3 text-[20px] text-text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">location_on</span>
+                            Địa điểm
+                        </h3>
+<div class="flex flex-col gap-6">
+<!-- Address -->
+<div>
+<label class="font-label-caps text-label-caps text-text-secondary mb-2 block">Địa chỉ chi tiết</label>
+<textarea class="w-full bg-bg-ash-rose border-transparent rounded-xl px-4 py-3 font-body-md text-text-primary focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:bg-white transition-colors resize-none" rows="2">123 Đường Hoa Hồng, Phường 4, Quận 5, TP. Hồ Chí Minh</textarea>
+</div>
+<!-- Google Maps Link -->
+<div>
+<label class="font-label-caps text-label-caps text-text-secondary mb-2 block">Link Google Maps</label>
+<div class="flex gap-2">
+<input class="flex-1 bg-bg-ash-rose border-transparent rounded-xl px-4 py-3 font-body-md text-text-primary focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:bg-white transition-colors text-text-secondary" type="url" value="https://maps.google.com/..."/>
+<button class="px-4 py-3 bg-white border border-border-light rounded-xl text-text-primary hover:bg-bg-ash-rose transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Branding & Media (Spans 1 col) -->
+<div class="flex flex-col gap-8">
+<!-- Card: Nhận diện -->
+<div class="bg-surface-bright rounded-2xl p-8 shadow-[0_8px_30px_rgba(246,184,198,0.06)] border border-border-light/50 h-full">
+<h3 class="font-h3 text-[20px] text-text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">palette</span>
+                            Nhận diện
+                        </h3>
+<div class="flex flex-col gap-8">
+<!-- Logo Upload -->
+<div>
+<label class="font-label-caps text-label-caps text-text-secondary mb-3 block">Logo cửa hàng</label>
+<div class="flex items-center gap-6">
+<div class="w-24 h-24 rounded-full bg-white border-2 border-dashed border-border-light flex items-center justify-center overflow-hidden relative group cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="minimalist botanical logo design with soft pink watercolor floral elements on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs11yrKubsmt9-7Pk7CSa-HBZ76TrnrP2UBOph5YGpSoz5qoLSytIKjr8XZPLRCX5fPzDgFxvJeLUuqcomAPbFJW5Kh3YKZ4ef_GrBsqrEN3IR5GIc0xI2LxJazBw3XKCST4V50UVxRocyEP1k7XIVRezTnpElsjk1l5hK6_Tp9TFTqlY27ADFG669Mz0wNrechjSAhadgRYoP46nC4RDhmvpydK7HtbQHo8LsNJZ5dgqjvI9Q4Nwa1bx06F_rbUf8L5j3vsMa9tl9"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-white">edit</span>
+</div>
+</div>
+<div class="flex-1">
+<p class="font-body-md text-sm text-text-secondary mb-2">Định dạng JPG, PNG. Tối đa 2MB. Khuyên dùng ảnh vuông.</p>
+<button class="text-primary-container font-h3 text-sm hover:underline">Tải ảnh mới</button>
+</div>
+</div>
+</div>
+<hr class="border-border-light/50"/>
+<!-- Banner Upload -->
+<div>
+<label class="font-label-caps text-label-caps text-text-secondary mb-3 block">Banner trang chủ</label>
+<div class="w-full h-32 rounded-xl bg-bg-ash-rose border-2 border-dashed border-border-light flex flex-col items-center justify-center cursor-pointer hover:bg-surface-dim transition-colors group relative overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="soft pastel floral arrangement with peonies and roses on light airy background panoramic view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbYvvdbzAb1KmMEJHJIr6VIkLGQ2ye-vlklEtRtjlEEnhNRQmVrkSzUYK_EiWuVw8Gp5cXRAPP-VfvQjGLh7goVMSoZKzaH5zBbdOEMh2xaYB6DSsggDEOKaS4_VO0iuqgRNRdPlfx_bW6jo3VfJyqEbEe4iJsYDf_yciOir2B2PSQhA42rLmINqVcWojDjtnpWfk88avZS1SANwTsHyV1ca_l-aV7hQilh8ItUSLIUPDq4dT7CMF1_x0-pfGJz46WdqyB81eR62k4"/>
+<div class="relative z-10 flex flex-col items-center bg-white/80 px-4 py-2 rounded-lg backdrop-blur-sm group-hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-primary-container mb-1">cloud_upload</span>
+<span class="font-body-md text-sm text-text-primary font-medium">Thay đổi Banner</span>
+</div>
+</div>
+</div>
+<hr class="border-border-light/50"/>
+<!-- Short Description -->
+<div>
+<label class="font-label-caps text-label-caps text-text-secondary mb-2 block">Mô tả ngắn (Slogan)</label>
+<textarea class="w-full bg-bg-ash-rose border-transparent rounded-xl px-4 py-3 font-body-md text-text-primary focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:bg-white transition-colors resize-none" rows="3">Gửi trao cảm xúc qua từng cánh hoa. Chuyên cung cấp các mẫu hoa thiết kế mang phong cách nhẹ nhàng, tinh tế.</textarea>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

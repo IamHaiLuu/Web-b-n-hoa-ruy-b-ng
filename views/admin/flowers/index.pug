@@ -1,0 +1,111 @@
+extends ../../layouts/admin
+
+include ../../partials/admin/status-badge
+
+block content
+  div(class="mb-6 flex flex-col justify-between gap-4 lg:flex-row lg:items-end")
+    div
+      p(class="text-sm leading-6 text-textSoft") Thêm, chỉnh sửa và quản lý các mẫu hoa hiển thị trên menu.
+    a(href="/admin/flowers/new" class="btn-primary")
+      span(class="material-symbols-outlined") add
+      | Thêm mẫu hoa
+
+  form(method="GET" action="/admin/flowers" class="soft-card mb-5 grid gap-3 p-4 sm:grid-cols-2 xl:grid-cols-[1fr_180px_170px_170px_150px_120px]")
+    input(type="text" name="q" value=(query.q || '') placeholder="Tìm kiếm theo tên hoa..." class="field")
+    select(name="category" class="field")
+      option(value="") Danh mục
+      each category in categories
+        option(value=category._id selected=String(query.category || '') === String(category._id))= category.name
+    select(name="visibilityStatus" class="field")
+      option(value="") Hiển thị
+      option(value="visible" selected=query.visibilityStatus === 'visible') Đang hiển thị
+      option(value="hidden" selected=query.visibilityStatus === 'hidden') Đang ẩn
+    select(name="availabilityStatus" class="field")
+      option(value="") Tình trạng
+      option(value="available" selected=query.availabilityStatus === 'available') Còn mẫu
+      option(value="out_of_stock" selected=query.availabilityStatus === 'out_of_stock') Tạm hết
+    select(name="sort" class="field")
+      option(value="recent" selected=!query.sort || query.sort === 'recent') Mới cập nhật
+      option(value="price_asc" selected=query.sort === 'price_asc') Giá thấp đến cao
+      option(value="price_desc" selected=query.sort === 'price_desc') Giá cao đến thấp
+      option(value="name_asc" selected=query.sort === 'name_asc') Tên A-Z
+    button(type="submit" class="btn-primary !py-2")
+      span(class="material-symbols-outlined") tune
+      | Lọc
+
+  form#bulk-form(method="POST" action="/admin/flowers/bulk")
+  div(data-bulk-bar class="mb-5 hidden rounded-3xl border border-borderSoft bg-white p-4 shadow-card")
+    div(class="flex flex-wrap items-center justify-between gap-3")
+      p(class="text-sm font-semibold text-textMain")
+        span(data-selected-count) 0
+        |  mẫu hoa đã chọn
+      div(class="flex flex-wrap gap-2")
+        select(name="action" form="bulk-form" class="field w-56")
+          option(value="hide") Ẩn khỏi menu
+          option(value="show") Hiện trên menu
+          option(value="feature") Đánh dấu nổi bật
+          option(value="unfeature") Bỏ nổi bật
+          option(value="delete") Xóa
+        button(type="submit" form="bulk-form" class="btn-secondary") Áp dụng
+
+  if flowers && flowers.length
+    div(class="overflow-hidden rounded-3xl border border-borderSoft bg-white shadow-card")
+      div(class="overflow-x-auto")
+        table(class="min-w-full divide-y divide-borderSoft text-left text-sm")
+          thead(class="bg-cream-100 text-xs font-bold uppercase tracking-wide text-textSoft")
+            tr
+              th(class="px-4 py-3")
+                input(type="checkbox" data-check-all class="rounded border-borderSoft text-rosePastel-300")
+              th(class="px-4 py-3") Mẫu hoa
+              th(class="px-4 py-3") Danh mục
+              th(class="px-4 py-3") Giá
+              th(class="px-4 py-3") Tình trạng
+              th(class="px-4 py-3") Hiển thị
+              th(class="px-4 py-3") Nổi bật
+              th(class="px-4 py-3") Cập nhật
+              th(class="px-4 py-3 text-right") Hành động
+          tbody(class="divide-y divide-borderSoft")
+            each flower in flowers
+              tr(class="align-middle")
+                td(class="px-4 py-4")
+                  input(type="checkbox" name="selectedIds" value=flower._id form="bulk-form" data-row-check class="rounded border-borderSoft text-rosePastel-300")
+                td(class="px-4 py-4")
+                  div(class="flex min-w-64 items-center gap-3")
+                    img(src=getPrimaryImageUrl(flower) alt=flower.name class="h-14 w-14 rounded-2xl object-cover")
+                    div
+                      a(href=`/admin/flowers/${flower._id}` class="font-semibold text-textMain hover:text-primary")= flower.name
+                      p(class="mt-1 line-clamp-2 max-w-xs text-xs text-textSoft")= flower.shortDescription || 'Chưa có mô tả'
+                td(class="px-4 py-4 text-textSoft") #{flower.category ? flower.category.name : 'Chưa có'}
+                td(class="px-4 py-4 font-semibold text-textMain")= formatCurrency(flower.referencePrice)
+                td(class="px-4 py-4")
+                  +availabilityBadge(flower.availabilityStatus)
+                td(class="px-4 py-4")
+                  +visibilityBadge(flower.visibilityStatus)
+                td(class="px-4 py-4")
+                  if flower.isFeatured
+                    span(class="text-sm font-semibold text-primary") Có
+                  else
+                    span(class="text-sm text-textSoft") Không
+                td(class="px-4 py-4 text-textSoft")= new Date(flower.updatedAt).toLocaleDateString('vi-VN')
+                td(class="px-4 py-4")
+                  div(class="flex justify-end gap-2")
+                    a(href=`/admin/flowers/${flower._id}` class="rounded-full p-2 text-textSoft hover:bg-cream-100 hover:text-textMain" aria-label="Xem")
+                      span(class="material-symbols-outlined") visibility
+                    a(href=`/admin/flowers/${flower._id}/edit` class="rounded-full p-2 text-textSoft hover:bg-cream-100 hover:text-textMain" aria-label="Sửa")
+                      span(class="material-symbols-outlined") edit
+                    form(method="POST" action=`/admin/flowers/${flower._id}/toggle-visibility`)
+                      button(type="submit" class="rounded-full p-2 text-textSoft hover:bg-cream-100 hover:text-textMain" aria-label="Ẩn hoặc hiện")
+                        span(class="material-symbols-outlined") visibility_off
+                    form(method="POST" action=`/admin/flowers/${flower._id}/delete`)
+                      button(type="submit" data-confirm-submit="Xóa mẫu hoa khỏi hệ thống quản lý chính?" class="rounded-full p-2 text-red-500 hover:bg-red-50" aria-label="Xóa")
+                        span(class="material-symbols-outlined") delete
+    include ../../partials/admin/pagination
+  else
+    div(class="soft-card p-10 text-center")
+      img(src="/images/placeholders/flower-placeholder.svg" alt="Chưa có mẫu hoa" class="mx-auto h-40 w-40 rounded-3xl object-cover")
+      h2(class="mt-5 font-display text-2xl font-bold text-textMain") Chưa có mẫu hoa nào
+      p(class="mt-3 text-sm text-textSoft") Hãy thêm mẫu hoa đầu tiên để bắt đầu hiển thị trên menu khách hàng.
+      a(href="/admin/flowers/new" class="btn-primary mt-6") Thêm mẫu hoa đầu tiên
+
+block scripts
+  script(src="/js/bulk-actions.js")

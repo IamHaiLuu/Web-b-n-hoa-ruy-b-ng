@@ -1,0 +1,24 @@
+doctype html
+html(lang="vi")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{pageTitle ? `${pageTitle} - Menu Hoa Admin` : 'Menu Hoa Admin'}
+    link(rel="preconnect", href="https://fonts.googleapis.com")
+    link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap", rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap", rel="stylesheet")
+    link(rel="stylesheet", href="/css/app.css")
+    block head
+  body(class="min-h-screen bg-cream-50 font-sans text-textMain")
+    include ../partials/admin/toast
+    div(class="min-h-screen lg:flex")
+      include ../partials/admin/sidebar
+      div(class="min-w-0 flex-1")
+        include ../partials/admin/topbar
+        main(class="px-4 py-6 sm:px-6 lg:px-8")
+          block content
+    script(src="/js/toast.js")
+    script(src="/js/admin-sidebar.js")
+    script(src="/js/admin-flowers.js")
+    block scripts

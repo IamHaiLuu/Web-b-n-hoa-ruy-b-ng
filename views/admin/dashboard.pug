@@ -1,0 +1,59 @@
+extends ../layouts/admin
+
+include ../partials/admin/status-badge
+
+block content
+  div(class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4")
+    div(class="soft-card p-5")
+      p(class="text-sm font-semibold text-textSoft") Tổng số mẫu hoa
+      p(class="mt-3 font-display text-3xl font-bold text-textMain")= stats.totalFlowers
+    div(class="soft-card p-5")
+      p(class="text-sm font-semibold text-textSoft") Đang hiển thị
+      p(class="mt-3 font-display text-3xl font-bold text-emerald-700")= stats.visibleFlowers
+    div(class="soft-card p-5")
+      p(class="text-sm font-semibold text-textSoft") Tạm ẩn
+      p(class="mt-3 font-display text-3xl font-bold text-primary")= stats.hiddenFlowers
+    div(class="soft-card p-5")
+      p(class="text-sm font-semibold text-textSoft") Tạm hết
+      p(class="mt-3 font-display text-3xl font-bold text-textSoft")= stats.outOfStockFlowers
+
+  div(class="mt-6 grid gap-6 xl:grid-cols-[1fr_0.9fr]")
+    section(class="soft-card p-5")
+      div(class="mb-4 flex items-center justify-between")
+        h2(class="font-display text-xl font-bold text-textMain") Mẫu hoa cập nhật gần đây
+        a(href="/admin/flowers" class="text-sm font-semibold text-primary") Xem tất cả
+      if recentFlowers && recentFlowers.length
+        div(class="space-y-3")
+          each flower in recentFlowers
+            a(href=`/admin/flowers/${flower._id}` class="flex items-center gap-3 rounded-2xl border border-borderSoft bg-white p-3 hover:bg-cream-100")
+              img(src=getPrimaryImageUrl(flower) alt=flower.name class="h-14 w-14 rounded-2xl object-cover")
+              div(class="min-w-0 flex-1")
+                p(class="truncate font-semibold text-textMain")= flower.name
+                p(class="text-sm text-textSoft") #{flower.category ? flower.category.name : 'Chưa có danh mục'} · #{formatCurrency(flower.referencePrice)}
+              +visibilityBadge(flower.visibilityStatus)
+      else
+        p(class="rounded-2xl bg-cream-100 p-5 text-sm text-textSoft") Chưa có mẫu hoa nào.
+
+    section(class="soft-card p-5")
+      h2(class="font-display text-xl font-bold text-textMain") Thống kê theo danh mục
+      if categoryStats && categoryStats.length
+        div(class="mt-4 space-y-3")
+          each category in categoryStats
+            div(class="flex items-center justify-between rounded-2xl bg-cream-100 px-4 py-3")
+              div(class="flex items-center gap-3")
+                span(class="material-symbols-outlined text-primary")= category.icon || 'local_florist'
+                p(class="font-semibold text-textMain")= category.name
+              span(class="rounded-full bg-white px-3 py-1 text-sm font-semibold text-textSoft") #{category.flowerCount} mẫu
+      else
+        p(class="mt-4 rounded-2xl bg-cream-100 p-5 text-sm text-textSoft") Chưa có danh mục.
+
+  div(class="mt-6 grid gap-4 sm:grid-cols-3")
+    a(href="/admin/flowers/new" class="btn-primary")
+      span(class="material-symbols-outlined") add
+      | Thêm mẫu hoa
+    a(href="/admin/categories" class="btn-secondary")
+      span(class="material-symbols-outlined") category
+      | Quản lý danh mục
+    a(href="/" target="_blank" class="btn-secondary")
+      span(class="material-symbols-outlined") open_in_new
+      | Xem menu khách hàng

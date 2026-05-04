@@ -1,0 +1,19 @@
+footer(class="border-t border-borderSoft bg-white")
+  div(class="shell grid gap-8 py-10 md:grid-cols-[1.3fr_1fr_1fr]")
+    div
+      p(class="font-display text-2xl font-semibold italic text-rosePastel-300") #{settings && settings.storeName ? settings.storeName : 'Menu Hoa'}
+      p(class="mt-3 max-w-md text-sm leading-6 text-textSoft") #{settings && settings.description ? settings.description : 'Menu hoa tươi mỗi ngày với phong cách pastel nhẹ nhàng.'}
+      p(class="mt-4 text-xs font-medium text-textSoft") Menu chỉ mang tính tham khảo. Mẫu hoa có thể thay đổi theo mùa và tình trạng hoa trong ngày.
+    div
+      h2(class="text-sm font-bold uppercase tracking-wide text-textMain") Link nhanh
+      div(class="mt-4 grid gap-3 text-sm text-textSoft")
+        a(href="/" class="hover:text-textMain") Trang chủ
+        a(href="/#categories" class="hover:text-textMain") Danh mục
+        a(href="/#featured" class="hover:text-textMain") Hoa nổi bật
+        a(href="/contact" class="hover:text-textMain") Liên hệ
+    div
+      h2(class="text-sm font-bold uppercase tracking-wide text-textMain") Thông tin liên hệ
+      div(class="mt-4 space-y-3 text-sm text-textSoft")
+        p #{settings && settings.phone ? settings.phone : 'Số điện thoại sẽ được cập nhật'}
+        p #{settings && settings.address ? settings.address : 'Địa chỉ sẽ được cập nhật'}
+        p #{settings && settings.openingHours ? settings.openingHours : '08:00 - 20:00, Thứ 2 - Chủ nhật'}

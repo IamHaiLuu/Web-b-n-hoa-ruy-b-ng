@@ -1,0 +1,16 @@
+if success && success.length
+  div(class="fixed right-4 top-4 z-50 space-y-3")
+    each item in success
+      div(data-toast class="flex max-w-sm items-start gap-3 rounded-3xl border border-mint-200 bg-white px-4 py-3 text-sm shadow-soft")
+        span(class="material-symbols-outlined text-emerald-600") check_circle
+        p(class="flex-1 font-medium text-textMain")= item
+        button(type="button" data-toast-close class="text-textSoft hover:text-textMain" aria-label="Đóng thông báo")
+          span(class="material-symbols-outlined") close
+if error && error.length
+  div(class="fixed right-4 top-4 z-50 space-y-3")
+    each item in error
+      div(data-toast class="flex max-w-sm items-start gap-3 rounded-3xl border border-red-100 bg-white px-4 py-3 text-sm shadow-soft")
+        span(class="material-symbols-outlined text-red-600") error
+        p(class="flex-1 font-medium text-textMain")= item
+        button(type="button" data-toast-close class="text-textSoft hover:text-textMain" aria-label="Đóng thông báo")
+          span(class="material-symbols-outlined") close

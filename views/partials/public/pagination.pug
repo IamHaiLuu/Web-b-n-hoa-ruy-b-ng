@@ -1,0 +1,8 @@
+if pagination && pagination.totalPages > 1
+  nav(class="mt-10 flex items-center justify-center gap-2" aria-label="Phân trang")
+    if pagination.page > 1
+      a(href=buildPageUrl(currentPath, query, pagination.page - 1) class="btn-secondary !px-4 !py-2") Trước
+    each pageNumber in Array.from({ length: pagination.totalPages }, (_, index) => index + 1)
+      a(href=buildPageUrl(currentPath, query, pageNumber) class=`rounded-full px-4 py-2 text-sm font-semibold ${pageNumber === pagination.page ? 'bg-rosePastel-200 text-textMain' : 'border border-borderSoft bg-white text-textSoft hover:text-textMain'}`)= pageNumber
+    if pagination.page < pagination.totalPages
+      a(href=buildPageUrl(currentPath, query, pagination.page + 1) class="btn-secondary !px-4 !py-2") Sau

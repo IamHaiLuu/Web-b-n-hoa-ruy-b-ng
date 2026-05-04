@@ -1,0 +1,11 @@
+extends ../layouts/public
+
+block content
+  section(class="shell py-20")
+    div(class="soft-card mx-auto max-w-2xl p-10 text-center")
+      span(class="material-symbols-outlined mx-auto text-5xl text-red-500") error
+      h1(class="mt-5 font-display text-3xl font-bold text-textMain") Có lỗi xảy ra
+      p(class="mt-3 text-sm leading-6 text-textSoft")= message || 'Hệ thống đang gặp lỗi. Vui lòng thử lại sau.'
+      a(href="/" class="btn-primary mt-6") Về trang chủ
+      if stack
+        pre(class="mt-8 overflow-auto rounded-2xl bg-cream-200 p-4 text-left text-xs text-textSoft")= stack

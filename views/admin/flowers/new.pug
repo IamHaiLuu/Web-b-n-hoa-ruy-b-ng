@@ -1,0 +1,14 @@
+extends ../../layouts/admin
+
+block content
+  div(class="mb-6")
+    a(href="/admin/flowers" class="inline-flex items-center gap-2 text-sm font-semibold text-textSoft hover:text-textMain")
+      span(class="material-symbols-outlined") arrow_back
+      | Quay lại danh sách
+  - const formAction = '/admin/flowers';
+  - const method = 'POST';
+  - const submitLabel = 'Thêm mẫu hoa';
+  include _form
+
+block scripts
+  script(src="/js/image-uploader.js")

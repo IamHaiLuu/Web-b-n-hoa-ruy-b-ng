@@ -1,0 +1,29 @@
+section#contact(class="shell py-12")
+  div(class="grid gap-6 rounded-4xl border border-borderSoft bg-cream-100 p-6 shadow-card md:grid-cols-[1.2fr_1fr] md:p-8")
+    div
+      p(class="text-xs font-bold uppercase tracking-wide text-primary") Liên hệ
+      h2(class="mt-2 font-display text-3xl font-semibold text-textMain") #{settings && settings.storeName ? settings.storeName : 'Menu Hoa'}
+      p(class="mt-3 max-w-2xl text-sm leading-6 text-textSoft") #{settings && settings.description ? settings.description : 'Menu hoa tươi mỗi ngày với phong cách pastel nhẹ nhàng. Vui lòng liên hệ cửa hàng để được tư vấn mẫu phù hợp.'}
+      div(class="mt-6 flex flex-wrap gap-3")
+        a(href=phoneUrl(settings && settings.phone) class="btn-primary")
+          span(class="material-symbols-outlined") call
+          | Gọi cửa hàng
+        a(href=getZaloUrl(settings && settings.zalo) class="btn-secondary" target="_blank" rel="noopener")
+          span(class="material-symbols-outlined") chat
+          | Nhắn Zalo
+        a(href=(settings && settings.googleMapsUrl ? settings.googleMapsUrl : '#') class="btn-secondary" target="_blank" rel="noopener")
+          span(class="material-symbols-outlined") map
+          | Xem bản đồ
+    div(class="grid gap-3 rounded-3xl bg-white p-5 text-sm text-textSoft")
+      p
+        span(class="font-semibold text-textMain") Điện thoại:
+        |  #{settings && settings.phone ? settings.phone : 'Đang cập nhật'}
+      p
+        span(class="font-semibold text-textMain") Zalo:
+        |  #{settings && settings.zalo ? settings.zalo : 'Đang cập nhật'}
+      p
+        span(class="font-semibold text-textMain") Địa chỉ:
+        |  #{settings && settings.address ? settings.address : 'Đang cập nhật'}
+      p
+        span(class="font-semibold text-textMain") Giờ mở cửa:
+        |  #{settings && settings.openingHours ? settings.openingHours : '08:00 - 20:00, Thứ 2 - Chủ nhật'}

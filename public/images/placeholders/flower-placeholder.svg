@@ -1,0 +1,11 @@
+<svg width="900" height="900" viewBox="0 0 900 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="900" rx="96" fill="#FFF8F7"/>
+  <circle cx="450" cy="446" r="238" fill="#FCE7EC"/>
+  <path d="M447 600C447 540 447 493 447 430" stroke="#40655D" stroke-width="24" stroke-linecap="round"/>
+  <path d="M449 513C386 490 342 450 318 392" stroke="#40655D" stroke-width="22" stroke-linecap="round"/>
+  <path d="M449 520C509 500 553 461 586 402" stroke="#40655D" stroke-width="22" stroke-linecap="round"/>
+  <path d="M449 302C401 243 303 274 302 355C301 436 399 466 449 405C499 466 597 436 596 355C595 274 497 243 449 302Z" fill="#F6B8C6"/>
+  <path d="M449 329C421 296 366 314 365 359C364 405 420 422 449 388C478 422 534 405 533 359C532 314 477 296 449 329Z" fill="#FFFDF9"/>
+  <path d="M352 642H548" stroke="#D9C2F0" stroke-width="26" stroke-linecap="round"/>
+  <text x="450" y="740" text-anchor="middle" fill="#8A7777" font-family="Arial, sans-serif" font-size="34" font-weight="600">Menu Hoa</text>
+</svg>

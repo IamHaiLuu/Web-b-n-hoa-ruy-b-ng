@@ -1,0 +1,11 @@
+mixin availabilityBadge(status)
+  if status === 'available'
+    span(class="rounded-full bg-mint-100 px-3 py-1 text-xs font-semibold text-emerald-700") Còn mẫu
+  else
+    span(class="rounded-full bg-cream-200 px-3 py-1 text-xs font-semibold text-textSoft") Tạm hết
+
+mixin visibilityBadge(status)
+  if status === 'visible'
+    span(class="rounded-full bg-rosePastel-100 px-3 py-1 text-xs font-semibold text-primary") Đang hiển thị
+  else
+    span(class="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-600") Đang ẩn

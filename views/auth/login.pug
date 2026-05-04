@@ -1,0 +1,45 @@
+doctype html
+html(lang="vi")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{pageTitle || 'Đăng nhập quản trị'}
+    link(rel="preconnect", href="https://fonts.googleapis.com")
+    link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap", rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap", rel="stylesheet")
+    link(rel="stylesheet", href="/css/app.css")
+  body(class="min-h-screen bg-cream-50 font-sans text-textMain")
+    include ../partials/admin/toast
+    main(class="grid min-h-screen lg:grid-cols-[1fr_520px]")
+      section(class="hidden bg-cream-100 p-10 lg:flex lg:flex-col lg:justify-between")
+        a(href="/" class="font-display text-3xl font-bold italic text-rosePastel-300") Menu Hoa
+        div(class="max-w-xl")
+          img(src="/images/placeholders/flower-placeholder.svg" alt="Hoa pastel" class="h-72 w-72 rounded-4xl object-cover shadow-soft")
+          h1(class="mt-8 font-display text-4xl font-bold leading-tight text-textMain") Quản lý menu hoa dễ dàng mỗi ngày.
+          p(class="mt-4 text-base leading-7 text-textSoft") Khu vực quản trị dành cho chủ cửa hàng cập nhật mẫu hoa, danh mục và thông tin liên hệ.
+      section(class="flex items-center justify-center p-6")
+        div(class="w-full max-w-md")
+          a(href="/" class="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-textSoft hover:text-textMain")
+            span(class="material-symbols-outlined") arrow_back
+            | Về trang khách hàng
+          div(class="soft-card p-6 sm:p-8")
+            p(class="font-display text-2xl font-bold text-textMain") Menu Hoa Admin
+            h1(class="mt-2 font-display text-3xl font-bold text-textMain") Đăng nhập quản trị
+            p(class="mt-2 text-sm text-textSoft") Nhập email và mật khẩu admin để tiếp tục.
+            form(method="POST" action="/admin/login" class="mt-7 space-y-5")
+              div
+                label(for="email" class="label") Email
+                input#email(type="email" name="email" value=(old && old.email ? old.email : '') autocomplete="email" class="field" required)
+              div
+                label(for="password" class="label") Mật khẩu
+                input#password(type="password" name="password" autocomplete="current-password" class="field" required)
+              div(class="flex items-center justify-between gap-3 text-sm")
+                label(class="inline-flex items-center gap-2 text-textSoft")
+                  input(type="checkbox" name="remember" class="rounded border-borderSoft text-rosePastel-300 focus:ring-rosePastel-200")
+                  | Ghi nhớ đăng nhập
+                span(class="text-textSoft") Quên mật khẩu?
+              button(type="submit" class="btn-primary w-full")
+                span(class="material-symbols-outlined") login
+                | Đăng nhập
+    script(src="/js/toast.js")

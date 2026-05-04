@@ -1,0 +1,18 @@
+extends ../../layouts/admin
+
+block content
+  div(class="mb-6 flex flex-wrap items-center justify-between gap-3")
+    a(href=`/admin/flowers/${flower._id}` class="inline-flex items-center gap-2 text-sm font-semibold text-textSoft hover:text-textMain")
+      span(class="material-symbols-outlined") arrow_back
+      | Quay lại chi tiết
+    form(method="POST" action=`/admin/flowers/${flower._id}/delete`)
+      button(type="submit" data-confirm-submit="Xóa mẫu hoa khỏi hệ thống quản lý chính?" class="btn-danger")
+        span(class="material-symbols-outlined") delete
+        | Xóa mẫu hoa
+  - const formAction = `/admin/flowers/${flower._id}`;
+  - const method = 'PUT';
+  - const submitLabel = 'Lưu thay đổi';
+  include _form
+
+block scripts
+  script(src="/js/image-uploader.js")

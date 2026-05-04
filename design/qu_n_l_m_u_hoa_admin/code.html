@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quản lý mẫu hoa - Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&amp;family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#81505d",
+                        "secondary-container": "#e8d1ff",
+                        "on-primary-container": "#754652",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#d5c2c5",
+                        "inverse-on-surface": "#ffedec",
+                        "on-error-container": "#93000a",
+                        "bg-main": "#FFFDF9",
+                        "on-primary-fixed": "#330f1a",
+                        "status-available": "#BFE7DD",
+                        "error": "#ba1a1a",
+                        "on-background": "#231919",
+                        "surface-tint": "#81505d",
+                        "inverse-surface": "#382e2e",
+                        "accent-lavender": "#D9C2F0",
+                        "text-primary": "#3F3434",
+                        "surface-container-low": "#fff0f0",
+                        "on-secondary-fixed-variant": "#513f65",
+                        "secondary-fixed": "#eedbff",
+                        "surface-container-high": "#f6e4e3",
+                        "surface-dim": "#e8d6d5",
+                        "border-light": "#F1DCDC",
+                        "on-tertiary-fixed-variant": "#284d46",
+                        "surface-bright": "#fff8f7",
+                        "on-tertiary-fixed": "#00201b",
+                        "on-secondary-container": "#6a577f",
+                        "background": "#fff8f7",
+                        "surface-container": "#fceae9",
+                        "surface": "#fff8f7",
+                        "on-surface-variant": "#504346",
+                        "tertiary-container": "#a9d1c7",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#f0dede",
+                        "on-tertiary-container": "#365b53",
+                        "status-unavailable": "#F1DCDC",
+                        "tertiary": "#40655d",
+                        "secondary-fixed-dim": "#d4beeb",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#f4b6c4",
+                        "tertiary-fixed-dim": "#a7cfc5",
+                        "bg-soft-rose": "#FFF8F7",
+                        "inverse-primary": "#f4b6c4",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#241337",
+                        "outline": "#837376",
+                        "tertiary-fixed": "#c3ebe1",
+                        "primary-fixed": "#ffd9e0",
+                        "surface-variant": "#f0dede",
+                        "on-surface": "#231919",
+                        "secondary": "#69567e",
+                        "primary-container": "#f6b8c6",
+                        "on-error": "#ffffff",
+                        "accent-mint": "#BFE7DD",
+                        "on-primary-fixed-variant": "#663945",
+                        "bg-ash-rose": "#F8EFEF",
+                        "on-secondary": "#ffffff",
+                        "text-secondary": "#8A7777"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "section-padding": "80px",
+                        "stack-lg": "32px",
+                        "card-gap": "24px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "price": ["Plus Jakarta Sans"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "price": ["20px", { "lineHeight": "1", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "h2": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-bg-main text-text-primary font-body-md font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<aside class="w-[280px] h-screen border-r sticky left-0 border-r border-[#F1DCDC] dark:border-stone-800 bg-white dark:bg-stone-900 shadow-none flex flex-col p-6 z-20">
+<div class="mb-8">
+<h1 class="text-xl font-bold text-[#3F3434] dark:text-stone-100 font-['Plus_Jakarta_Sans']">Menu Hoa Admin</h1>
+<p class="text-sm text-text-secondary mt-1">Cửa hàng hoa nghệ thuật</p>
+</div>
+<button class="w-full bg-primary-container text-text-primary rounded-full py-3 px-4 flex items-center justify-center gap-2 font-body-md font-body-md hover:bg-primary-fixed transition-colors mb-8">
+<span class="material-symbols-outlined">add</span>
+            Thêm mẫu mới
+        </button>
+<nav class="flex-1 space-y-1">
+<a class="px-4 py-3 mb-2 flex items-center gap-3 transition-all text-[#8E8282] dark:text-stone-400 hover:bg-[#FFF8F7] dark:hover:bg-stone-800/50 rounded-xl font-['Plus_Jakarta_Sans'] text-[15px] font-medium hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Tổng quan
+            </a>
+<a class="px-4 py-3 mb-2 flex items-center gap-3 transition-all bg-[#F8EFEF] dark:bg-stone-800 text-[#3F3434] dark:text-[#F6B8C6] rounded-xl font-semibold font-['Plus_Jakarta_Sans'] text-[15px] hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_florist</span>
+                Quản lý mẫu hoa
+            </a>
+<a class="px-4 py-3 mb-2 flex items-center gap-3 transition-all text-[#8E8282] dark:text-stone-400 hover:bg-[#FFF8F7] dark:hover:bg-stone-800/50 rounded-xl font-['Plus_Jakarta_Sans'] text-[15px] font-medium hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">category</span>
+                Danh mục
+            </a>
+<a class="px-4 py-3 mb-2 flex items-center gap-3 transition-all text-[#8E8282] dark:text-stone-400 hover:bg-[#FFF8F7] dark:hover:bg-stone-800/50 rounded-xl font-['Plus_Jakarta_Sans'] text-[15px] font-medium hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+                Đơn tư vấn
+            </a>
+<a class="px-4 py-3 mb-2 flex items-center gap-3 transition-all text-[#8E8282] dark:text-stone-400 hover:bg-[#FFF8F7] dark:hover:bg-stone-800/50 rounded-xl font-['Plus_Jakarta_Sans'] text-[15px] font-medium hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Cài đặt
+            </a>
+<a class="px-4 py-3 mb-2 flex items-center gap-3 transition-all text-[#8E8282] dark:text-stone-400 hover:bg-[#FFF8F7] dark:hover:bg-stone-800/50 rounded-xl font-['Plus_Jakarta_Sans'] text-[15px] font-medium hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                Báo cáo
+            </a>
+</nav>
+<div class="mt-auto pt-6 border-t border-border-light">
+<a class="px-4 py-3 flex items-center gap-3 transition-all text-[#8E8282] dark:text-stone-400 hover:bg-[#FFF8F7] dark:hover:bg-stone-800/50 rounded-xl font-['Plus_Jakarta_Sans'] text-[15px] font-medium hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Đăng xuất
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 bg-bg-main">
+<!-- Header Top -->
+<header class="h-20 border-b border-border-light px-8 flex items-center justify-between bg-white sticky top-0 z-10 shadow-[0_10px_30px_rgba(246,184,198,0.02)]">
+<h2 class="font-h2 text-h2 text-text-primary">Quản lý hoa</h2>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary">search</span>
+<input class="pl-10 pr-4 py-2 bg-bg-ash-rose border-none rounded-full text-sm w-64 focus:ring-1 focus:ring-primary-container focus:outline-none placeholder-text-secondary transition-all" placeholder="Tìm kiếm mẫu hoa..." type="text"/>
+</div>
+<div class="h-8 w-8 rounded-full bg-secondary-container flex items-center justify-center text-on-primary-container font-bold overflow-hidden">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="Portrait of a young professional woman with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-ylYol4wEGdVFGs6VwgJERwTV_6ONymdIaGDmDWKLHQgJFMvzPbLXdUrLcmooGFRy6auCtDb8CoDFKvUvl4DRVGWXhoG3KnNn5go9dnx14KLqp_udm0mVp0fQuPgKYXPJUIjB8XUhka875gCFKOf97ZikD9U6Zhmbg7mLqsGNdTU0eDwFjLtO_rjw0bbT99OZ5Rb--ZVtEpaoFaRlAfhlJp8dsIqeS7k4_LmLJ6t8jbpH6uGB9cIQSHet72Zx2uw9qfovFQSIpiLM"/>
+</div>
+</div>
+</header>
+<!-- Content -->
+<div class="p-8 flex-1 overflow-y-auto">
+<!-- Filters & Actions -->
+<div class="flex flex-wrap items-center justify-between gap-4 mb-8 bg-white p-4 rounded-xl border border-border-light shadow-[0_10px_30px_rgba(246,184,198,0.03)]">
+<div class="flex flex-wrap items-center gap-3">
+<select class="bg-bg-ash-rose border-none rounded-lg py-2 pl-4 pr-10 text-sm text-text-primary focus:ring-1 focus:ring-primary-container focus:outline-none appearance-none cursor-pointer font-body-md font-body-md">
+<option value="">Tất cả danh mục</option>
+<option value="hoa-sinh-nhat">Hoa sinh nhật</option>
+<option value="hoa-cuoi">Hoa cưới</option>
+<option value="khai-truong">Hoa khai trương</option>
+</select>
+<select class="bg-bg-ash-rose border-none rounded-lg py-2 pl-4 pr-10 text-sm text-text-primary focus:ring-1 focus:ring-primary-container focus:outline-none appearance-none cursor-pointer font-body-md font-body-md">
+<option value="">Trạng thái hiển thị</option>
+<option value="dang-hien-thi">Đang hiển thị</option>
+<option value="dang-an">Đang ẩn</option>
+</select>
+<select class="bg-bg-ash-rose border-none rounded-lg py-2 pl-4 pr-10 text-sm text-text-primary focus:ring-1 focus:ring-primary-container focus:outline-none appearance-none cursor-pointer font-body-md font-body-md">
+<option value="">Tình trạng hàng</option>
+<option value="con-mau">Còn mẫu</option>
+<option value="tam-het">Tạm hết</option>
+</select>
+</div>
+<button class="bg-white border border-border-light text-text-primary rounded-lg py-2 px-4 flex items-center gap-2 hover:bg-surface-bright transition-colors text-sm font-medium">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                    Lọc thêm
+                </button>
+</div>
+<!-- Table Container -->
+<div class="bg-white rounded-xl border border-border-light overflow-hidden shadow-[0_10px_30px_rgba(246,184,198,0.03)]">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[1000px]">
+<thead>
+<tr class="border-b border-border-light bg-surface-bright">
+<th class="p-4 w-12 text-center">
+<input class="rounded text-primary focus:ring-primary border-outline-variant cursor-pointer" type="checkbox"/>
+</th>
+<th class="p-4 font-label-caps text-label-caps text-text-secondary w-20">Ảnh</th>
+<th class="p-4 font-label-caps text-label-caps text-text-secondary">Tên hoa</th>
+<th class="p-4 font-label-caps text-label-caps text-text-secondary">Danh mục</th>
+<th class="p-4 font-label-caps text-label-caps text-text-secondary">Giá</th>
+<th class="p-4 font-label-caps text-label-caps text-text-secondary">Trạng thái</th>
+<th class="p-4 font-label-caps text-label-caps text-text-secondary text-center">Nổi bật</th>
+<th class="p-4 font-label-caps text-label-caps text-text-secondary text-right">Hành động</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-light/50">
+<!-- Row 1 -->
+<tr class="hover:bg-bg-ash-rose/50 transition-colors group">
+<td class="p-4 text-center">
+<input class="rounded text-primary focus:ring-primary border-outline-variant cursor-pointer" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-dim">
+<img alt="Bouquet" class="w-full h-full object-cover" data-alt="Soft pink and white rose bouquet in Korean style wrapping" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiK-T-z-9Po0xy7b2JeUJX0-NspiAgUfgrvSop8SLvG6OHFzsiPEvr4zvvGn5vnGaewSUocGGtcuaxDYppJf3FEnEsHQ_zYOPoRo0snOLdNWEMfgj7Ol8DqVM9KZ62JFst7aIf4YaMVjRQgKT9s_-454KghDMN2fQAISweuZT7ZAJUuKVNeAn3OQYerezVTw1xrxqBeLh4bwbRs5GC9Uar1ZbKWCAY3myJiU7EFWMj0kBfMPkF21PUqZLlASs9LzXVwByhluJuTpmH"/>
+</div>
+</td>
+<td class="p-4">
+<div class="font-medium text-text-primary">Mùa Xuân Nho Nhỏ</div>
+<div class="text-xs text-text-secondary mt-1">SP-001</div>
+</td>
+<td class="p-4 text-sm text-text-secondary">Hoa chúc mừng</td>
+<td class="p-4 font-price text-[16px] font-semibold text-text-primary">850.000đ</td>
+<td class="p-4">
+<div class="flex flex-col gap-2 items-start">
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-status-available/30 text-on-tertiary-fixed-variant">Còn mẫu</span>
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-secondary-container/30 text-on-secondary-container">Đang hiển thị</span>
+</div>
+</td>
+<td class="p-4 text-center">
+<button class="text-primary-container hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-text-secondary hover:text-primary transition-colors rounded-lg hover:bg-surface-dim" title="Xem">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-primary transition-colors rounded-lg hover:bg-surface-dim" title="Sửa">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-error transition-colors rounded-lg hover:bg-error-container/50" title="Xóa">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-bg-ash-rose/50 transition-colors group">
+<td class="p-4 text-center">
+<input class="rounded text-primary focus:ring-primary border-outline-variant cursor-pointer" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-dim">
+<img alt="Bouquet" class="w-full h-full object-cover" data-alt="Elegant white tulips minimalist arrangement" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkhLa_r2mV9dklmAJGp0keQT7_Hn52vyxqflT3kcER8n3BlnfbrC1R7GNqX4cC9xLDfgFOPT_aPBR0J10Ndhe_IebTlCcM0KPMEWJANBp4zqIW2MNncpR7JCrcXlppxhwxz6f0G1uOKbDNjqZ93osquuynX9Nj8v-iJBRA9Z0FQ0FGOATnapGN3QwiD1NguYbavkXZFXEAPPYQh42goyldpWfVcOS1WCpsNHofdawb-R2ZbXLcE12xkdEmbuvSAoCEi7nWwE2G5NK9"/>
+</div>
+</td>
+<td class="p-4">
+<div class="font-medium text-text-primary">Thuần Khiết</div>
+<div class="text-xs text-text-secondary mt-1">SP-002</div>
+</td>
+<td class="p-4 text-sm text-text-secondary">Hoa cưới</td>
+<td class="p-4 font-price text-[16px] font-semibold text-text-primary">1.200.000đ</td>
+<td class="p-4">
+<div class="flex flex-col gap-2 items-start">
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-status-available/30 text-on-tertiary-fixed-variant">Còn mẫu</span>
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-secondary-container/30 text-on-secondary-container">Đang hiển thị</span>
+</div>
+</td>
+<td class="p-4 text-center">
+<button class="text-border-light hover:text-primary transition-colors">
+<span class="material-symbols-outlined">star</span>
+</button>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-text-secondary hover:text-primary transition-colors rounded-lg hover:bg-surface-dim" title="Xem">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-primary transition-colors rounded-lg hover:bg-surface-dim" title="Sửa">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-error transition-colors rounded-lg hover:bg-error-container/50" title="Xóa">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-bg-ash-rose/50 transition-colors group">
+<td class="p-4 text-center">
+<input class="rounded text-primary focus:ring-primary border-outline-variant cursor-pointer" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-dim opacity-60">
+<img alt="Bouquet" class="w-full h-full object-cover" data-alt="Lavender and chamomile small rustic bouquet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbqqMStlcnuJ04VjBY7ftzIzVe7pdh9R0YOmt8pcngd-d6S4HcnJGY0GELYT4les8r_9gx1taTjh8UI_Wv2R2CE3wNPCiVk8j29k7ge9SjDzH_QXm9naMQlAwB8j6Bc5h0uCLWIaSzTEIg5VkDhDl2iMGg0eSjrSRy5EvhHadrWeTDV85e7xm-9TLagkdnG_Gll-usWYa7fuHCFbqu4WREUCMqgGfCJHqy7qjYFAYHsPP52axe1-y3KVqia2-6q2EOLT-W3PUZrAXQ"/>
+</div>
+</td>
+<td class="p-4">
+<div class="font-medium text-text-primary">Chiều Tím</div>
+<div class="text-xs text-text-secondary mt-1">SP-003</div>
+</td>
+<td class="p-4 text-sm text-text-secondary">Hoa sinh nhật</td>
+<td class="p-4 font-price text-[16px] font-semibold text-text-primary">650.000đ</td>
+<td class="p-4">
+<div class="flex flex-col gap-2 items-start">
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-surface-variant text-on-surface-variant">Tạm hết</span>
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-secondary-container/30 text-on-secondary-container">Đang hiển thị</span>
+</div>
+</td>
+<td class="p-4 text-center">
+<button class="text-border-light hover:text-primary transition-colors">
+<span class="material-symbols-outlined">star</span>
+</button>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-text-secondary hover:text-primary transition-colors rounded-lg hover:bg-surface-dim" title="Xem">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-primary transition-colors rounded-lg hover:bg-surface-dim" title="Sửa">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-error transition-colors rounded-lg hover:bg-error-container/50" title="Xóa">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-4 border-t border-border-light flex items-center justify-between bg-white">
+<div class="text-sm text-text-secondary">
+                        Hiển thị 1-10 của 45 mẫu hoa
+                    </div>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-text-secondary hover:bg-bg-ash-rose transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary-container text-text-primary font-medium text-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-text-secondary hover:bg-bg-ash-rose transition-colors text-sm">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-text-secondary hover:bg-bg-ash-rose transition-colors text-sm">3</button>
+<span class="w-8 h-8 flex items-center justify-center text-text-secondary text-sm">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-text-secondary hover:bg-bg-ash-rose transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

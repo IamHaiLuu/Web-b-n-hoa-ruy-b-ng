@@ -1,0 +1,73 @@
+extends ../../layouts/admin
+
+block content
+  div(class="grid gap-6 xl:grid-cols-[390px_1fr]")
+    section(class="soft-card p-5")
+      h2(class="font-display text-xl font-bold text-textMain") #{editingCategory ? 'Sửa danh mục' : 'Thêm danh mục'}
+      form(method="POST" action=(editingCategory ? `/admin/categories/${editingCategory._id}` : '/admin/categories') class="mt-5 space-y-4")
+        if editingCategory
+          input(type="hidden" name="_method" value="PUT")
+        div
+          label(for="name" class="label") Tên danh mục
+          input#name(type="text" name="name" value=(old.name || '') class="field" required maxlength="80")
+          if errors.name
+            p(class="help-error")= errors.name
+        div
+          label(for="description" class="label") Mô tả
+          textarea#description(name="description" rows="4" maxlength="300" class="field")= old.description || ''
+          if errors.description
+            p(class="help-error")= errors.description
+        div(class="grid gap-4 sm:grid-cols-2")
+          div
+            label(for="icon" class="label") Material icon
+            input#icon(type="text" name="icon" value=(old.icon || 'local_florist') class="field")
+          div
+            label(for="sortOrder" class="label") Thứ tự
+            input#sortOrder(type="number" name="sortOrder" value=(old.sortOrder || 0) class="field")
+        label(class="flex items-center justify-between rounded-2xl bg-cream-100 px-4 py-3 text-sm font-semibold text-textMain")
+          span Hiển thị danh mục
+          input(type="checkbox" name="isVisible" checked=(old.isVisible !== false) class="rounded border-borderSoft text-rosePastel-300 focus:ring-rosePastel-200")
+        button(type="submit" class="btn-primary w-full")
+          span(class="material-symbols-outlined") save
+          | #{editingCategory ? 'Lưu danh mục' : 'Thêm danh mục'}
+        if editingCategory
+          a(href="/admin/categories" class="btn-secondary w-full") Hủy sửa
+
+    section(class="soft-card p-5")
+      h2(class="font-display text-xl font-bold text-textMain") Danh sách danh mục
+      if categories && categories.length
+        div(class="mt-5 overflow-x-auto")
+          table(class="min-w-full divide-y divide-borderSoft text-left text-sm")
+            thead(class="bg-cream-100 text-xs font-bold uppercase tracking-wide text-textSoft")
+              tr
+                th(class="px-4 py-3") Danh mục
+                th(class="px-4 py-3") Số mẫu
+                th(class="px-4 py-3") Trạng thái
+                th(class="px-4 py-3 text-right") Hành động
+            tbody(class="divide-y divide-borderSoft")
+              each category in categories
+                tr
+                  td(class="px-4 py-4")
+                    div(class="flex items-center gap-3")
+                      span(class="material-symbols-outlined rounded-2xl bg-cream-100 p-2 text-primary")= category.icon || 'local_florist'
+                      div
+                        p(class="font-semibold text-textMain")= category.name
+                        p(class="mt-1 max-w-md text-xs text-textSoft")= category.description || 'Chưa có mô tả'
+                  td(class="px-4 py-4 text-textSoft") #{category.flowerCount} mẫu
+                  td(class="px-4 py-4")
+                    if category.isVisible
+                      span(class="rounded-full bg-mint-100 px-3 py-1 text-xs font-semibold text-emerald-700") Đang hiển thị
+                    else
+                      span(class="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-600") Đang ẩn
+                  td(class="px-4 py-4")
+                    div(class="flex justify-end gap-2")
+                      a(href=`/admin/categories/${category._id}/edit` class="rounded-full p-2 text-textSoft hover:bg-cream-100 hover:text-textMain" aria-label="Sửa")
+                        span(class="material-symbols-outlined") edit
+                      form(method="POST" action=`/admin/categories/${category._id}/toggle-visibility`)
+                        button(type="submit" class="rounded-full p-2 text-textSoft hover:bg-cream-100 hover:text-textMain" aria-label="Ẩn hoặc hiện")
+                          span(class="material-symbols-outlined") visibility
+                      form(method="POST" action=`/admin/categories/${category._id}/delete`)
+                        button(type="submit" data-confirm-submit="Xóa danh mục này? Hệ thống sẽ chặn nếu danh mục còn mẫu hoa." class="rounded-full p-2 text-red-500 hover:bg-red-50" aria-label="Xóa")
+                          span(class="material-symbols-outlined") delete
+      else
+        p(class="mt-5 rounded-2xl bg-cream-100 p-5 text-sm text-textSoft") Chưa có danh mục nào.

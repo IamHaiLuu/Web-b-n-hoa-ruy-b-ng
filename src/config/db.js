@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 let listenersRegistered = false;
+let connectionPromise = null;
 
 function maskMongoUri(uri) {
   try {
@@ -43,12 +44,38 @@ export async function connectDB() {
   const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/menu_hoa';
 
   mongoose.set('strictQuery', true);
+  mongoose.set('bufferCommands', false);
   registerConnectionLogs();
+
+  if (mongoose.connection.readyState === 1) {
+    const { host, name, readyState } = mongoose.connection;
+    console.log(
+      `[database] MongoDB already connected. host=${host} database=${name} readyState=${readyState}`
+    );
+    return mongoose;
+  }
+
+  if (mongoose.connection.readyState === 2 && connectionPromise) {
+    console.log('[database] MongoDB connection is already in progress');
+    return connectionPromise;
+  }
 
   console.log(`[database] Connecting to MongoDB: ${maskMongoUri(uri)}`);
 
+  connectionPromise = mongoose
+    .connect(uri, {
+      serverSelectionTimeoutMS: 8000,
+      connectTimeoutMS: 8000,
+      socketTimeoutMS: 45000,
+      maxPoolSize: 10
+    })
+    .catch((error) => {
+      connectionPromise = null;
+      throw error;
+    });
+
   try {
-    const connection = await mongoose.connect(uri);
+    const connection = await connectionPromise;
     const { host, name, readyState } = connection.connection;
     console.log(
       `[database] MongoDB connected successfully. host=${host} database=${name} readyState=${readyState}`
@@ -62,5 +89,6 @@ export async function connectDB() {
 
 export async function disconnectDB() {
   await mongoose.disconnect();
+  connectionPromise = null;
   console.log('[database] MongoDB disconnected by app');
 }

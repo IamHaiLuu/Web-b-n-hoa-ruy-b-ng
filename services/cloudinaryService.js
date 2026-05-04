@@ -1,4 +1,4 @@
-import cloudinary, { hasCloudinaryConfig } from '../config/cloudinary.js';
+import cloudinary, { configureCloudinary, hasCloudinaryConfig } from '../config/cloudinary.js';
 
 export const UPLOAD_FOLDERS = Object.freeze({
   root: 'menu-hoa',
@@ -7,11 +7,21 @@ export const UPLOAD_FOLDERS = Object.freeze({
 });
 
 export function ensureCloudinaryReady() {
-  if (!hasCloudinaryConfig()) {
-    const error = new Error('Cloudinary chưa được cấu hình. Vui lòng kiểm tra biến môi trường Cloudinary.');
+  if (!hasCloudinaryConfig() || !configureCloudinary()) {
+    const error = new Error(
+      'Cloudinary chưa được cấu hình. Vui lòng cập nhật CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY và CLOUDINARY_API_SECRET trong .env hoặc Vercel Environment Variables.'
+    );
     error.statusCode = 400;
     throw error;
   }
+}
+
+function normalizeCloudinaryError(error) {
+  if (error.message?.includes('Must supply api_key')) {
+    error.message = 'Cloudinary thiếu API key. Vui lòng kiểm tra CLOUDINARY_API_KEY.';
+    error.statusCode = 400;
+  }
+  return error;
 }
 
 export function uploadBuffer(file, folder = UPLOAD_FOLDERS.root) {
@@ -26,9 +36,10 @@ export function uploadBuffer(file, folder = UPLOAD_FOLDERS.root) {
       },
       (error, result) => {
         if (error) {
-          reject(error);
+          reject(normalizeCloudinaryError(error));
           return;
         }
+
         resolve({
           url: result.secure_url,
           publicId: result.public_id
@@ -52,6 +63,8 @@ export async function deleteAsset(publicId) {
   if (!publicId || !hasCloudinaryConfig()) {
     return;
   }
+
+  configureCloudinary();
   await cloudinary.uploader.destroy(publicId, { resource_type: 'image' });
 }
 

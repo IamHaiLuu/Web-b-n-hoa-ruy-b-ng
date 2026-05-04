@@ -51,11 +51,11 @@ storeSettingsSchema.statics.getSingleton = async function getSingleton() {
   let settings = await this.findOne();
   if (!settings) {
     settings = await this.create({
-      storeName: process.env.STORE_NAME || 'Menu Hoa',
-      phone: process.env.STORE_PHONE || '',
-      zalo: process.env.STORE_ZALO || '',
-      address: process.env.STORE_ADDRESS || '',
-      googleMapsUrl: process.env.STORE_GOOGLE_MAPS_URL || ''
+      storeName: 'Menu Hoa',
+      phone: '',
+      zalo: '',
+      address: '',
+      googleMapsUrl: ''
     });
   }
   return settings;

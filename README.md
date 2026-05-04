@@ -22,7 +22,7 @@ npm run seed:categories
 npm run dev
 ```
 
-Trên Windows PowerShell có thể copy env bằng:
+Trên Windows PowerShell:
 
 ```powershell
 Copy-Item .env.example .env
@@ -30,13 +30,14 @@ Copy-Item .env.example .env
 
 ## Biến môi trường
 
-Xem `.env.example`. Các biến quan trọng:
+Các biến kỹ thuật cần có:
 
 - `MONGODB_URI`: MongoDB local hoặc MongoDB Atlas.
 - `SESSION_SECRET`: chuỗi bí mật dài cho session.
 - `ADMIN_SEED_EMAIL`, `ADMIN_SEED_PASSWORD`: tài khoản admin seed.
-- `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`: upload ảnh sản phẩm.
-- `STORE_PHONE`, `STORE_ZALO`, `STORE_ADDRESS`, `STORE_GOOGLE_MAPS_URL`: thông tin liên hệ mặc định.
+- `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`: upload ảnh sản phẩm, logo và banner.
+
+Thông tin cửa hàng như tên, số điện thoại, Zalo, địa chỉ, giờ mở cửa, Google Maps và mô tả được chỉnh trong `/admin/settings`, không cấu hình bằng `.env`.
 
 ## Admin mặc định
 
@@ -58,7 +59,7 @@ Có thể đổi bằng `.env` trước khi seed.
 
 ## Upload ảnh
 
-Ảnh sản phẩm và logo/banner dùng Cloudinary. Nếu Cloudinary chưa cấu hình, form upload sẽ báo lỗi rõ ràng và server không hard-code secret. Product public thiếu ảnh sẽ dùng placeholder ở `/images/placeholders/flower-placeholder.svg`.
+Ảnh sản phẩm và logo/banner dùng Cloudinary. Nếu Cloudinary chưa cấu hình, form upload sẽ báo lỗi rõ ràng. Product public thiếu ảnh sẽ dùng placeholder ở `/images/placeholders/flower-placeholder.svg`.
 
 ## CSS production
 
@@ -70,7 +71,7 @@ Không dùng Tailwind CDN trong production.
 
 ## Deploy Vercel
 
-Project đã có `vercel.json` và entry deploy ở `index.js`.
+Project có `vercel.json` và entry deploy ở `index.js`.
 
 Trên Vercel cần cấu hình Environment Variables:
 
@@ -80,10 +81,5 @@ Trên Vercel cần cấu hình Environment Variables:
 - `CLOUDINARY_CLOUD_NAME`
 - `CLOUDINARY_API_KEY`
 - `CLOUDINARY_API_SECRET`
-- `STORE_NAME`
-- `STORE_PHONE`
-- `STORE_ZALO`
-- `STORE_ADDRESS`
-- `STORE_GOOGLE_MAPS_URL`
 
 Vercel dùng `index.js` làm serverless handler. Khi chạy local, cùng file `index.js` sẽ tự gọi `app.listen()` bằng `npm run dev` hoặc `npm start`.

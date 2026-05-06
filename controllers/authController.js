@@ -33,6 +33,15 @@ export async function login(req, res, next) {
     await admin.save();
 
     req.flash('success', 'Đăng nhập thành công.');
+    await new Promise((resolve, reject) => {
+      req.session.save((error) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        resolve();
+      });
+    });
     return res.redirect('/admin');
   } catch (error) {
     return next(error);

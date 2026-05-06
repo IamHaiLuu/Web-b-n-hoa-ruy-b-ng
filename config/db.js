@@ -44,7 +44,7 @@ function registerConnectionLogs() {
 }
 
 export async function connectDB() {
-  const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/menu_hoa';
+  const uri = process.env.MONGODB_URI ;
 
   registerConnectionLogs();
 

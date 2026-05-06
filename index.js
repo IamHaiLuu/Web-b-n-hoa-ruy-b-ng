@@ -31,9 +31,11 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
+const isProduction = process.env.NODE_ENV === 'production';
 
 app.set('views', `${__dirname}/views`)
 app.set('view engine', 'pug');
+app.set('trust proxy', 1);
 
 configureSecurity(app);
 
@@ -57,7 +59,7 @@ app.use(
     cookie: {
       httpOnly: true,
       sameSite: 'lax',
-      secure: process.env.NODE_ENV === 'production',
+      secure: isProduction,
       maxAge: 1000 * 60 * 60 * 8
     }
   })

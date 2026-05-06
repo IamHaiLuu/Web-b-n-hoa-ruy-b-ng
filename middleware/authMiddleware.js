@@ -31,7 +31,7 @@ export function requireAdmin(req, res, next) {
 
 export function redirectIfAuthenticated(req, res, next) {
   if (req.currentAdmin) {
-    return res.redirect('/admin');
+    return res.redirect('/admin/');
   }
   return next();
 }

@@ -42,7 +42,7 @@ export async function login(req, res, next) {
         resolve();
       });
     });
-    return res.redirect('/admin');
+    return res.redirect('/admin/');
   } catch (error) {
     return next(error);
   }

@@ -3,6 +3,6 @@ import { dashboard } from '../controllers/adminDashboardController.js';
 
 const router = Router();
 
-router.get('/', dashboard);
+router.get(['/', ''], dashboard);
 
 export default router;
